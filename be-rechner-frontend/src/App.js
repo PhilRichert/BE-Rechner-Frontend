@@ -19,7 +19,7 @@ class App extends Component {
 
             </div>
               <div className="Footer">
-                <Route path="../components/Footer.js" />
+                <Route path="./components/Footer.js" />
               </div>
       </Router>
     );
