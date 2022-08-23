@@ -13,7 +13,7 @@ class App extends Component {
 
         
           <div className="App-header">
-                <Route path="../components/Footer.js" />
+                <Route path="../components/Navbar.js" />
           </div>
             <div className="App-logo">
 
