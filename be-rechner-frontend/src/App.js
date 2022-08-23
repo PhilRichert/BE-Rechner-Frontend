@@ -11,9 +11,9 @@ class App extends Component {
       <Router>
         <div className="App">
 
-        </div>
+        
           <div className="App-header">
-
+                <Route path="../components/Footer.js" />
           </div>
             <div className="App-logo">
 
@@ -21,6 +21,7 @@ class App extends Component {
               <div className="Footer">
                 <Route path="../components/Footer.js" />
               </div>
+      </div>
       </Router>
     );
   }
