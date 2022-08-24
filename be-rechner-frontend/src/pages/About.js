@@ -8,12 +8,9 @@ class About extends Component {
     return (
       <div>
         <Navbar />
-        <Banner
-          title="About Me!"
-          subtitle="This page is all about me and my work!"
-        />
+        <Banner title="About Me!" />
         <div className="container">
-          <h2>About</h2>
+          <h2>Neuer Eintrag</h2>
           <p>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc
             placerat orci eu nulla sagittis, pulvinar dignissim lectus
