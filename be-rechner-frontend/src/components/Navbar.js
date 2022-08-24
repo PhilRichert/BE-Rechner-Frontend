@@ -1,12 +1,20 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import bonbon from "../components/images/sugary-logo.png";
+import "./Navbar.css";
 
 class Navbar extends Component {
   render() {
     return (
-      <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
+      <nav className="navbar navbar-expand-lg navbar-light bg-primary">
         <a className="navbar-brand" href="#">
-          Simple React website
+          <img
+            className="rechtsdies"
+            src={bonbon}
+            alt="Sugar"
+            width="180"
+            height="47"
+          />
         </a>
         <button
           className="navbar-toggler"
@@ -28,8 +36,8 @@ class Navbar extends Component {
               </Link>
             </li>
             <li className="nav-item">
-              <Link className="nav-link" to="/about">
-                About
+              <Link className="nav-link" to="/newentry">
+                Neuer Eintrag
               </Link>
             </li>
             <li className="nav-item">

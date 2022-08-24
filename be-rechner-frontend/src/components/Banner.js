@@ -6,8 +6,7 @@ class Banner extends Component {
     return (
       <div className="jumbotron jumbotron-fluid">
         <div className="container">
-          <h1 className="display-3">Sugar, Sugar, Sugar</h1>
-          <p className="lead">not so good</p>
+          <h1 className="display-3">{this.props.title}</h1>
         </div>
       </div>
     );
