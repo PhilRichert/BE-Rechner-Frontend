@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 
 // import "./App.css";
 import Home from "./pages/Home.js";
-import About from "./pages/About.js";
+import NewEntry from "./pages/NewEntry.js";
 import Contact from "./pages/Contact.js";
 class App extends Component {
   render() {
@@ -11,7 +11,7 @@ class App extends Component {
       <Router>
         <div>
           <Route exact path="/" component={Home} />
-          <Route path="/about" component={About} />
+          <Route path="/newentry" component={NewEntry} />
           <Route path="/contact" component={Contact} />
         </div>
       </Router>
