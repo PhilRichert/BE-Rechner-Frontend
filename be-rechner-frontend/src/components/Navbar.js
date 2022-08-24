@@ -7,7 +7,7 @@ class Navbar extends Component {
   render() {
     return (
       <nav className="navbar navbar-expand-lg navbar-light bg-primary">
-        <a className="navbar-brand" href="#">
+        <a className="navbar-brand" href="https://y6wzel.csb.app/">
           <img
             className="rechtsdies"
             src={bonbon}
