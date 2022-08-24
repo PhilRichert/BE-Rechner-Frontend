@@ -13,14 +13,14 @@ class Footer extends Component {
             <div className="col-md-6 text-right">
               <div>
                 <span>Follow Us: </span>
-                <a href="https://www.google.de/" target="_blank">
+                <a href="https://www.google.de/">
                   <i className="fab fa-facebook-f px-3" />
                 </a>
-                <a href="https://www.google.de/" target="_blank">
+                <a href="https://www.google.de/">
                   <i className="fab fa-twitter pr-3" />
                 </a>
 
-                <a href="https://www.google.de/" target="_blank">
+                <a href="https://www.google.de/">
                   <i className="fab fa-github pr-3" />
                 </a>
               </div>
