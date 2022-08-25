@@ -1,6 +1,6 @@
 .navbar {
-  padding-top: 15px;
-  padding-bottom: 15px;
+  padding-top: 0px;
+  padding-bottom: 0px;
 }
 
 .rechtsdies {
@@ -10,4 +10,7 @@
   background-color: #eee !important;
   -webkit-box-shadow: 0px 0px 25px 5px rgba(0, 0, 0, 0.2);
   box-shadow: 0px 0px 25px 5px rgba(0, 0, 0, 0.2);
+}
+.row {
+  width: 100%;
 }

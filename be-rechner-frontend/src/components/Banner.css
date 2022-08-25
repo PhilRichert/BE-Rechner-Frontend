@@ -1,13 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans&display=swap");
 
-/*.jumbotron {
-  background-image: url(https://source.unsplash.com/1600x900/?candy);
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: 100% auto;
-  color: #000;
-}
-*/
 .jumbotron {
   background: rgb(0, 161, 128);
   background: linear-gradient(

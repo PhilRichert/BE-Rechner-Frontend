@@ -1,0 +1,27 @@
+h1 {
+  font-size: 32px;
+}
+h2 {
+  font-size: 22px;
+  line-height: 32px;
+}
+
+.col-md-6 {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+.col-md-6 img {
+  width: 95%;
+  height: auto;
+  padding: 5px;
+  border: 1px solid #ccc;
+}
+
+/*
+@media (max-width: 420px) {
+  .col {
+    width: 100% !important;
+  }
+}
+
+*/

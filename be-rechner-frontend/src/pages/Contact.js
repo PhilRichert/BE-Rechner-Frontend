@@ -2,7 +2,8 @@ import React from "react";
 import Footer from "../components/Footer.js";
 import Navbar from "../components/Navbar.js";
 import Banner from "../components/Banner.js";
-export default function About() {
+
+export default function Contact() {
   return (
     <div>
       <Navbar />
