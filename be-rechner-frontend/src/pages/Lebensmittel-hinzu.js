@@ -9,7 +9,7 @@ import icon2 from "../pages/images/icon2.png";
 import icon3 from "../pages/images/icon3.png";
 import "./Main.css";
 
-export default function Lebensmittel() {
+export default function LebensmittelHinzu() {
   return (
     <div>
       <Navbar />

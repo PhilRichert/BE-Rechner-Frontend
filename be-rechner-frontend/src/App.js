@@ -5,7 +5,8 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home.js";
 import NewEntry from "./pages/NewEntry.js";
 import Lebensmittel from "./pages/Lebensmittel.js";
-import Contact from "./pages/Contact.js";
+import LebensmittelHinzu from "./pages/Lebensmittel-hinzu.js";
+import Kontakt from "./pages/Kontakt.js";
 export default function App() {
   return (
     <BrowserRouter>
@@ -13,7 +14,8 @@ export default function App() {
         <Route path="/" element={<Home />} />
         <Route path="/newentry" element={<NewEntry />} />
         <Route path="/lebensmittel" element={<Lebensmittel />} />
-        <Route path="/contact" element={<Contact />} />
+        <Route path="/lebensmittelhinzu" element={<LebensmittelHinzu />} />
+        <Route path="/kontakt" element={<Kontakt />} />
       </Routes>
     </BrowserRouter>
   );
