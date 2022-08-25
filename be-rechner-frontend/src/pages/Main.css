@@ -53,13 +53,15 @@ h3 {
   padding: 0 !important;
 }
 
+
+/*
 .container {
   background: url("images/poly1.png") center center;
   background-repeat: no-repeat;
   /*background-size: cover;*/
 }
 
-/*
+
 @media (max-width: 420px) {
   .col {
     width: 100% !important;
