@@ -26,7 +26,7 @@ export default function NewEntry() {
         <p> &nbsp;</p>
         <p> &nbsp;</p>
 
-        <h2>Mittach</h2>
+        <h2>Mittag</h2>
         <p>
           Maecenas dapibus, est posuere eleifend rutrum, lectus ligula gravida
           urna, at pretium dui turpis non lorem.
