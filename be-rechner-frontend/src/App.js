@@ -5,7 +5,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home.js";
 import NewEntry from "./pages/NewEntry.js";
 import Lebensmittel from "./pages/Lebensmittel.js";
-import LebensmittelListe from "./pages/Lebensmittelliste";
+import LebensmittelListe from "./pages/Lebensmittelliste.js";
 import LebensmittelHinzu from "./pages/Lebensmittel-hinzu.js";
 import Kontakt from "./pages/Kontakt.js";
 export default function App() {
