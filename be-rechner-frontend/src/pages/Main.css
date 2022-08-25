@@ -5,16 +5,58 @@ h2 {
   font-size: 22px;
   line-height: 32px;
 }
+h3 {
+  font-size: 18px;
+  line-height: 24px;
+}
 
 .col-md-6 {
   padding-top: 10px;
   padding-bottom: 10px;
 }
-.col-md-6 img {
+.col-md-6 img,
+.col-md-4 img,
+.col-md-5 img {
   width: 95%;
   height: auto;
   padding: 5px;
   border: 1px solid #ccc;
+}
+
+.col-md-6 .icon,
+.col-md-4 .icon,
+.col-md-5 .icon,
+.col-md-2 .icon {
+  padding: 0 !important;
+  border: none !important;
+}
+.col-md-6 .icon:hover,
+.col-md-4 .icon:hover,
+.col-md-5 .icon:hover,
+.col-md-2 .icon:hover {
+  transform: scale(1.03);
+}
+.col-md-2 {
+  text-align: center !important;
+}
+.thesidebar {
+  padding-top: 20px;
+  padding-bottom: 20px;
+  text-align: center !important;
+  background: #defdfd;
+}
+.thesidebar img {
+  margin: 0 auto;
+}
+.thesidebar .nav-link {
+  display: block;
+  padding: 0 !important;
+}
+
+.container {
+  background: url("images/poly1.png") center center;
+  background-repeat: no-repeat;
+  /*background-size: cover;*/
 }
 
 /*

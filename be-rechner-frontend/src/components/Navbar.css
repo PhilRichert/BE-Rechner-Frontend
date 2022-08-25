@@ -13,4 +13,14 @@
 }
 .row {
   width: 100%;
+  display: flex !important;
+  justify-content: space-between !important;
+}
+
+#navbarSupportedContent ul li a {
+  padding-left: 20px;
+}
+
+.collapse ul li a {
+  border-bottom: 1px solid #ddd;
 }

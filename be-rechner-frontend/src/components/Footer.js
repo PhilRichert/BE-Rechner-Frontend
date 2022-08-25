@@ -9,14 +9,14 @@ export default function Footer() {
           <div className="col-5 text-left">
             &#169; {new Date().getFullYear()} by P-R-R
           </div>
-          <div className="col-7 text-right">
+          <div className="col-7 text-right socials">
             <div>
               <span>Follow Us: </span>
               <a href="https://www.google.de/">
-                <i className="fab fa-facebook-f px-3" />
+                <i className="fab fa-instagram px-3" />
               </a>
               <a href="https://www.google.de/">
-                <i className="fab fa-twitter pr-3" />
+                <i className="fab fa-pinterest pr-3" />
               </a>
 
               <a href="https://www.google.de/">
