@@ -44,7 +44,7 @@ export default function Lebensmittel() {
           <div className="col-md-2 thesidebar">
             <h3>Deine Lebensmittel</h3>
 
-            <Link className="nav-link" to="/">
+            <Link className="nav-link" to="/lebensmittelliste">
               <img
                 src={icon3}
                 className="icon"
@@ -55,7 +55,7 @@ export default function Lebensmittel() {
               Lebensmittel auswählen
             </Link>
             <hr />
-            <Link className="nav-link" to="/">
+            <Link className="nav-link" to="/lebensmittelliste">
               <img
                 src={icon1}
                 className="icon"
@@ -66,7 +66,7 @@ export default function Lebensmittel() {
               Meine Liste
             </Link>
             <hr />
-            <Link className="nav-link" to="/">
+            <Link className="nav-link" to="/lebensmittelliste">
               <img
                 src={icon2}
                 className="icon"
