@@ -8,7 +8,7 @@ export default function Kontakt() {
   return (
     <div>
       <Navbar />
-      <Banner title="Contact" subtitle="Please contact me at test@test.in" />
+      <Banner title="Kontakt" />
       <div className="container text-left">
         <div className="row">
           <div className="col-md-6">
@@ -21,7 +21,7 @@ export default function Kontakt() {
             <h2>Legal Informations</h2>
             <p>
               Das ist ein Entwickler-Projekt und wir waren zu faul sämtliche
-              Urheberquellen zu notieren. Bei Fragen, nicht fragen.
+              Urheberquellen zu notieren. Bei Fragen: nicht fragen.
             </p>
           </div>
         </div>
