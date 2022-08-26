@@ -20,7 +20,7 @@ export default function Lebensmittel() {
             <p>
               Sugary ist von Menschen mit Diabetes für Menschen mit Diabetes. In
               der Sugary App findest du all deine wichtigen Diabetes-Daten,
-              Integrationen und manuellen Einträgen, bequem an einem Ort.
+              Integrationen und manuelle Einträge, bequem an einem Ort.
             </p>
             <p>
               Die Sugary App steht dir in deinem Diabetes-Alltag jederzeit zur
