@@ -22,8 +22,6 @@ export default function MeineMenues() {
             <h2>Kannste füllen</h2>
           </div>
           <div className="col-md-2 thesidebar">
-            <h3>Deine Lebensmittel</h3>
-
             <Link className="nav-link" to="/lebensmittelliste">
               <img
                 src={icon3}
