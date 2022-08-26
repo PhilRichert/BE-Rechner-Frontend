@@ -1,13 +1,13 @@
 .navbar {
-  padding-top: 0px;
-  padding-bottom: 0px;
+  padding-top: 5px;
+  padding-bottom: 5px;
 }
 
 .rechtsdies {
   margin-right: 5px;
 }
 .bg-primary {
-  background-color: #eee !important;
+  background-color: rgb(223, 223, 223) !important;
   -webkit-box-shadow: 0px 0px 25px 5px rgba(0, 0, 0, 0.2);
   box-shadow: 0px 0px 25px 5px rgba(0, 0, 0, 0.2);
 }
