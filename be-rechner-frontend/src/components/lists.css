@@ -1,0 +1,4 @@
+.table table-hover {
+  display: flex;
+  flex-direction: column;
+}

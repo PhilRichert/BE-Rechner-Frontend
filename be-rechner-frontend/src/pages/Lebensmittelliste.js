@@ -17,7 +17,7 @@ export default function LebensmittelListe() {
       <div className="container text-left">
         <div className="row">
           <Lists />
-          <div className="col-md-2 thesidebar">
+          <div className="col-md-2 thesidebar" style={{ maxHeight: "500px" }}>
             <Link className="nav-link" to="/lebensmittelliste">
               <img
                 src={icon3}
