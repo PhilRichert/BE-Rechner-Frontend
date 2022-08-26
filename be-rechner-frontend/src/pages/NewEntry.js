@@ -33,6 +33,27 @@ export default function NewEntry() {
         </p>
         <p> &nbsp;</p>
         <p> &nbsp;</p>
+        <h2>Zwischenmahlzeit 2</h2>
+        <p>
+          Maecenas dapibus, est posuere eleifend rutrum, lectus ligula gravida
+          urna, at pretium dui turpis non lorem.
+        </p>
+        <p> &nbsp;</p>
+        <p> &nbsp;</p>
+        <h2>Abendessen</h2>
+        <p>
+          Maecenas dapibus, est posuere eleifend rutrum, lectus ligula gravida
+          urna, at pretium dui turpis non lorem.
+        </p>
+        <p> &nbsp;</p>
+        <p> &nbsp;</p>
+        <h2>Spätmahlzeit</h2>
+        <p>
+          Maecenas dapibus, est posuere eleifend rutrum, lectus ligula gravida
+          urna, at pretium dui turpis non lorem.
+        </p>
+        <p> &nbsp;</p>
+        <p> &nbsp;</p>
       </div>
       <Footer />
     </div>
