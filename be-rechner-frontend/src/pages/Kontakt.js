@@ -16,7 +16,9 @@ export default function Kontakt() {
           </div>
           <div className="col-md-6">
             <h2>Sugary Heroes - bei Diabetis stets an deiner Seite...</h2>
-            <p>Philip | Romano | René</p>
+            <p>
+              <a href="https://github.com/PhilRichert">Philip</a> | <a href="https://github.com/ReneG001" >René</a> | <a href="https://github.com/romanomantek">Romano</a>
+            </p>
             <hr />
             <h2>Legal Informations</h2>
             <p>
