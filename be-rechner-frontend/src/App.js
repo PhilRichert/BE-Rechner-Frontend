@@ -6,7 +6,8 @@ import Home from "./pages/Home.js";
 import NewEntry from "./pages/NewEntry.js";
 import Lebensmittel from "./pages/Lebensmittel.js";
 import LebensmittelListe from "./pages/Lebensmittelliste.js";
-import LebensmittelHinzu from "./pages/Lebensmittel-hinzu.js";
+import MeineMenues from "./pages/MeineMenues.js";
+import LebensmittelHinzu from "./pages/Lebensmittelhinzu.js";
 import Kontakt from "./pages/Kontakt.js";
 export default function App() {
   return (
@@ -16,6 +17,7 @@ export default function App() {
         <Route path="/newentry" element={<NewEntry />} />
         <Route path="/lebensmittel" element={<Lebensmittel />} />
         <Route path="/lebensmittelliste" element={<LebensmittelListe />} />
+        <Route path="/meinemenues" element={<MeineMenues />} />
         <Route path="/lebensmittelhinzu" element={<LebensmittelHinzu />} />
         <Route path="/kontakt" element={<Kontakt />} />
       </Routes>
