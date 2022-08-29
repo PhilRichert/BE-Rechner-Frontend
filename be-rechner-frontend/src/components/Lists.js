@@ -34,26 +34,25 @@ const Lists = function () {
     protein,
     ballaststoffe
   ) => {
-    // return () => controller.abort();
-    // const options = {
-    //   url: "https://sugarlybackend.herokuapp.com/entrys/add",
-    //   method: "POST",
-    //   headers: {
-    //     Accept: "application/json",
-    //     "Content-Type": "application/json;charset=UTF-8",
-    //     name: name,
-    //     menge: menge,
-    //     brennwert: brennwert,
-    //     fett: fett,
-    //     kohlenhydrate: kohlenhydrate,
-    //     davonzucker: davonzucker,
-    //     protein: protein,
-    //     ballaststoffe: ballaststoffe,
-    //   },
-    // };
-    // axios(options).then((response) => {
-    //   console.log(response);
-    // });
+    const options = {
+      url: "https://sugarlybackend.herokuapp.com/entrys/add",
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json;charset=UTF-8",
+        name: name,
+        menge: menge,
+        brennwert: brennwert,
+        fett: fett,
+        kohlenhydrate: kohlenhydrate,
+        davonzucker: davonzucker,
+        protein: protein,
+        ballaststoffe: ballaststoffe,
+      },
+    };
+    axios(options).then((response) => {
+      console.log(response);
+    });
     console.log(
       name,
       menge,
@@ -100,13 +99,9 @@ const Lists = function () {
                 <td>{data.davonzucker}</td>
                 <td>{data.protein}</td>
                 <td>{data.ballaststoffe}</td>
+
                 <td>
-                  <select class="form-control form-control-sm">
-                    <option>Hinzufügen zu...</option>
-                  </select>
-                </td>
-                <td>
-                  <button
+                  {/* <button
                     onClick={Post_entry(
                       data.name,
                       data.menge,
@@ -117,7 +112,27 @@ const Lists = function () {
                       data.protein,
                       data.ballaststoffe
                     )}
-                  ></button>
+                  ></button> */}
+                  <button
+                    type="button"
+                    class="btn btn-primary"
+                    data-toggle="modal"
+                    data-target=".bd-example-modal-lg"
+                  >
+                    Large modal
+                  </button>
+
+                  <div
+                    class="modal fade bd-example-modal-lg"
+                    tabindex="-1"
+                    role="dialog"
+                    aria-labelledby="myLargeModalLabel"
+                    aria-hidden="true"
+                  >
+                    <div class="modal-dialog modal-lg">
+                      <div class="modal-content">...</div>
+                    </div>
+                  </div>
                 </td>
               </tr>
             ))}
