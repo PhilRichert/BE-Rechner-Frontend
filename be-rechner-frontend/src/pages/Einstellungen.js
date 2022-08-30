@@ -5,7 +5,7 @@ import Footer from "../components/Footer.js";
 import lolli from "../pages/images/lolli2.jpg";
 import "./Main.css";
 
-export default function Home() {
+export default function Einstellungen() {
     return (
       <div>
         <Navbar />
@@ -31,7 +31,7 @@ export default function Home() {
 
                 </input>
                 <input type="submit" className="form-save" placeholder="Speichern">
-                    
+
                 </input>
             </form>
 

@@ -47,6 +47,11 @@ export default function Navbar() {
                 </Link>
               </li>
               <li className="nav-item">
+                <Link className="nav-link" to="/einstellungen">
+                  Einstellungen
+                </Link>
+              </li>
+              <li className="nav-item">
                 <Link className="nav-link" to="/kontakt">
                   Kontakt
                 </Link>
