@@ -6,6 +6,10 @@ import lolli from "../pages/images/lolli2.jpg";
 import "./Main.css";
 
 export default function Einstellungen() {
+    const weight = form-weight
+
+
+
     return (
       <div>
         <Navbar />
@@ -15,22 +19,22 @@ export default function Einstellungen() {
                 Trage hier deine Werte ein.
             </p>
             <form>
-                <input type="text" className="form-weight" placeholder="Dein Gewicht in kg">
+                <input type="text" id="form-weight" placeholder="Dein Gewicht in kg">
 
                 </input>
-                <input type="text" className="form-height" placeholder="Deine Größe in cm">
+                <input type="text" id="form-height" placeholder="Deine Größe in cm">
 
                 </input>
-                <input type="text" className="form-faktor-morgens" placeholder="dein Faktor am morgen">
+                <input type="text" id="form-faktor-morgens" placeholder="dein Faktor am morgen">
 
                 </input>
-                <input type="text" className="form-faktor-mittags" placeholder="dein Faktor am Mittag">
+                <input type="text" id="form-faktor-mittags" placeholder="dein Faktor am Mittag">
 
                 </input>
-                <input type="text" className="form-faktor-abends" placeholder="dein Faktor am Abend">
+                <input type="text" id="form-faktor-abends" placeholder="dein Faktor am Abend">
 
                 </input>
-                <input type="submit" className="form-save" placeholder="Speichern">
+                <input type="submit" id="form-save" placeholder="Speichern">
 
                 </input>
             </form>
