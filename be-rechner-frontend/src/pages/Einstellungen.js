@@ -30,6 +30,9 @@ export default function Home() {
                 <input type="text" className="form-faktor-abends" placeholder="dein Faktor am Abend">
 
                 </input>
+                <input type="submit" className="form-save" placeholder="Speichern">
+                    
+                </input>
             </form>
 
 
