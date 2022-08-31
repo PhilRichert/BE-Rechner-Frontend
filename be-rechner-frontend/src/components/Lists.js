@@ -1,11 +1,12 @@
 import axios from "axios";
-
+import Select from "react-select";
 import { useEffect, useState } from "react";
 
 const Lists = function () {
   const [list, setList] = useState([]);
   const [buttoninfo, setButtoninfo] = useState([]);
-
+  const [input, setInput] = useState(100);
+  const [input2, setInput2] = useState("");
   const options = {
     url: "https://sugarlybackend.herokuapp.com/ingridients",
     method: "GET",
@@ -17,7 +18,11 @@ const Lists = function () {
 
   const getData = function () {
     axios(options).then((response) => {
-      setList(response.data);
+      if (!list) {
+        return null;
+      } else if (list !== response.data) {
+        setList(response.data);
+      }
     });
   };
   console.log(list);
@@ -55,7 +60,11 @@ const Lists = function () {
   };
 
   const handleclick = function (e) {
-    setButtoninfo(e.target.dataset.id);
+    if (!buttoninfo) {
+      return null;
+    } else if (buttoninfo !== e.target.dataset.id) {
+      setButtoninfo(e.target.dataset.id);
+    }
   };
 
   function fund() {
@@ -63,7 +72,22 @@ const Lists = function () {
     if (!funde) {
       return null;
     }
+    const options = [
+      { value: "frühstück", label: "Frühstück" },
+      { value: "mittag", label: "Mittagessen" },
+      { value: "abend", label: "Abendbrot" },
+      { value: "nacht", label: "Nachts" },
+    ];
 
+    const handleChange = (selectedOption) => {
+      if (!selectedOption) {
+        return null;
+      } else if (input2 !== selectedOption.label) {
+        setInput2(selectedOption.label);
+      }
+    };
+
+    console.log(input2);
     return (
       <div>
         <table className="table table-hover">
@@ -88,17 +112,31 @@ const Lists = function () {
             <td>
               {" "}
               <form>
-                <input type="text" id="menge" name="menge" placeholder="100" />
+                <input
+                  type="text"
+                  id="menge"
+                  name="menge"
+                  placeholder="100"
+                  value={input}
+                  onChange={(e) => {
+                    if (!input) {
+                      return null;
+                    } else if (input !== e.target.value) {
+                      setInput(e.target.value);
+                    }
+                  }}
+                />
               </form>
             </td>
-            <td>{funde.brennwert}</td>
-            <td>{funde.fett}</td>
-            <td>{funde.kohlenhydrate}</td>
-            <td>{funde.davonzucker}</td>
-            <td>{funde.protein}</td>
-            <td>{funde.ballaststoffe}</td>
+            <td>{(input * funde.brennwert) / 100}</td>
+            <td>{(input * funde.fett) / 100}</td>
+            <td>{(input * funde.kohlenhydrate) / 100}</td>
+            <td>{(input * funde.davonzucker) / 100}</td>
+            <td>{(input * funde.protein) / 100}</td>
+            <td>{(input * funde.ballaststoffe) / 100}</td>
           </tbody>
         </table>
+        <Select options={options} onChange={handleChange} />
         <button
           type="button"
           class="btn btn-primary btn-lg"
@@ -110,7 +148,8 @@ const Lists = function () {
             funde.kohlenhydrate,
             funde.davonzucker,
             funde.protein,
-            funde.ballaststoffe
+            funde.ballaststoffe,
+            input2
           )}
         >
           Hinzufügen zu Tagesplan
