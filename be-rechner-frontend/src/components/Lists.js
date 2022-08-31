@@ -1,10 +1,10 @@
-// import useAxios from "../components/useAxios.js";
 import axios from "axios";
-// import { FcPlus } from "react-icons/fc";
+
 import { useEffect, useState } from "react";
 
 const Lists = function () {
   const [list, setList] = useState([]);
+  const [buttoninfo, setButtoninfo] = useState([]);
 
   const options = {
     url: "https://sugarlybackend.herokuapp.com/ingridients",
@@ -18,10 +18,9 @@ const Lists = function () {
   const getData = function () {
     axios(options).then((response) => {
       setList(response.data);
-      console.log(list);
     });
   };
-
+  console.log(list);
   useEffect(() => getData(), []);
 
   const Post_entry = (
@@ -53,17 +52,72 @@ const Lists = function () {
     axios(options).then((response) => {
       console.log(response);
     });
-    console.log(
-      name,
-      menge,
-      brennwert,
-      fett,
-      kohlenhydrate,
-      davonzucker,
-      protein,
-      ballaststoffe
-    );
   };
+
+  const handleclick = function (e) {
+    setButtoninfo(e.target.dataset.id);
+  };
+
+  function fund() {
+    const funde = list.find((e) => parseInt(buttoninfo) === e.id);
+    if (!funde) {
+      return null;
+    }
+
+    return (
+      <div>
+        <table className="table table-hover">
+          <thead className="thead-dark">
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Name</th>
+              <th scope="col">Menge (in g)</th>
+              <th scope="col">Brennwert (Kcal)</th>
+              <th scope="col">Fett</th>
+              <th scope="col">Kohlenhydrate</th>
+              <th scope="col">davon Zucker</th>
+              <th scope="col">Protein</th>
+              <th scope="col">Ballaststoffe</th>
+              <th scope="col"></th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <th scope="row">{funde.id}</th>
+            <td>{funde.name}</td>
+            <td>
+              {" "}
+              <form>
+                <input type="text" id="menge" name="menge" placeholder="100" />
+              </form>
+            </td>
+            <td>{funde.brennwert}</td>
+            <td>{funde.fett}</td>
+            <td>{funde.kohlenhydrate}</td>
+            <td>{funde.davonzucker}</td>
+            <td>{funde.protein}</td>
+            <td>{funde.ballaststoffe}</td>
+          </tbody>
+        </table>
+        <button
+          type="button"
+          class="btn btn-primary btn-lg"
+          onClick={Post_entry(
+            funde.name,
+            funde.menge,
+            funde.brennwert,
+            funde.fett,
+            funde.kohlenhydrate,
+            funde.davonzucker,
+            funde.protein,
+            funde.ballaststoffe
+          )}
+        >
+          Hinzufügen zu Tagesplan
+        </button>
+      </div>
+    );
+  }
 
   return (
     <article className="col-md-5">
@@ -92,7 +146,7 @@ const Lists = function () {
               <tr>
                 <th scope="row">{data.id}</th>
                 <td>{data.name}</td>
-                <td>{data.menge}</td>
+                <td>100</td>
                 <td>{data.brennwert}</td>
                 <td>{data.fett}</td>
                 <td>{data.kohlenhydrate}</td>
@@ -101,25 +155,15 @@ const Lists = function () {
                 <td>{data.ballaststoffe}</td>
 
                 <td>
-                  {/* <button
-                    onClick={Post_entry(
-                      data.name,
-                      data.menge,
-                      data.brennwert,
-                      data.fett,
-                      data.kohlenhydrate,
-                      data.davonzucker,
-                      data.protein,
-                      data.ballaststoffe
-                    )}
-                  ></button> */}
                   <button
                     type="button"
                     class="btn btn-primary"
                     data-toggle="modal"
                     data-target=".bd-example-modal-lg"
+                    data-id={data.id}
+                    onClick={handleclick}
                   >
-                    Large modal
+                    Hinzufügen zu...
                   </button>
 
                   <div
@@ -130,7 +174,7 @@ const Lists = function () {
                     aria-hidden="true"
                   >
                     <div class="modal-dialog modal-lg">
-                      <div class="modal-content">...</div>
+                      <div class="modal-content">{fund()}</div>
                     </div>
                   </div>
                 </td>
