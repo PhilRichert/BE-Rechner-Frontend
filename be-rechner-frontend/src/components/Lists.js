@@ -141,7 +141,16 @@ const Lists = function () {
               <tr>
                 <th scope="row">{data.id}</th>
                 <td>{data.name}</td>
-                <td>{data.menge}</td>
+                <td>
+                  <form>
+                    <input
+                      type="text"
+                      id="menge"
+                      name="menge"
+                      placeholder="100"
+                    />
+                  </form>
+                </td>
                 <td>{data.brennwert}</td>
                 <td>{data.fett}</td>
                 <td>{data.kohlenhydrate}</td>
