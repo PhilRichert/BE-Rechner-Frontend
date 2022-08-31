@@ -85,7 +85,12 @@ const Lists = function () {
           <tbody>
             <th scope="row">{funde.id}</th>
             <td>{funde.name}</td>
-            <td>100</td>
+            <td>
+              {" "}
+              <form>
+                <input type="text" id="menge" name="menge" placeholder="100" />
+              </form>
+            </td>
             <td>{funde.brennwert}</td>
             <td>{funde.fett}</td>
             <td>{funde.kohlenhydrate}</td>
@@ -141,16 +146,7 @@ const Lists = function () {
               <tr>
                 <th scope="row">{data.id}</th>
                 <td>{data.name}</td>
-                <td>
-                  <form>
-                    <input
-                      type="text"
-                      id="menge"
-                      name="menge"
-                      placeholder="100"
-                    />
-                  </form>
-                </td>
+                <td>100</td>
                 <td>{data.brennwert}</td>
                 <td>{data.fett}</td>
                 <td>{data.kohlenhydrate}</td>
