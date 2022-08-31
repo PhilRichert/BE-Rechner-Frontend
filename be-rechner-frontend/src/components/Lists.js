@@ -6,6 +6,7 @@ const Lists = function () {
   const [list, setList] = useState([]);
   const [buttoninfo, setButtoninfo] = useState([]);
   const [input, setInput] = useState(100);
+  const [entry, setEntry] = useState({});
   const [input2, setInput2] = useState("");
   const options = {
     url: "https://sugarlybackend.herokuapp.com/ingridients",
@@ -28,34 +29,28 @@ const Lists = function () {
   console.log(list);
   useEffect(() => getData(), []);
 
-  const Post_entry = (
-    name,
-    menge,
-    brennwert,
-    fett,
-    kohlenhydrate,
-    davonzucker,
-    protein,
-    ballaststoffe
-  ) => {
+  const Post_entry = (funde) => {
     const options = {
       url: "https://sugarlybackend.herokuapp.com/entrys/add",
       method: "POST",
       headers: {
         Accept: "application/json",
         "Content-Type": "application/json;charset=UTF-8",
-        name: name,
-        menge: menge,
-        brennwert: brennwert,
-        fett: fett,
-        kohlenhydrate: kohlenhydrate,
-        davonzucker: davonzucker,
-        protein: protein,
-        ballaststoffe: ballaststoffe,
+      },
+      data: {
+        name: funde.name,
+        menge: parseInt(input),
+        brennwert: (input * funde.brennwert) / 100,
+        fett: (input * funde.fett) / 100,
+        kohlenhydrate: (input * funde.kohlenhydrate) / 100,
+        davonzucker: (input * funde.davonzucker) / 100,
+        protein: (input * funde.protein) / 100,
+        ballaststoffe: (input * funde.ballaststoffe) / 100,
+        mahlzeit: input2,
       },
     };
     axios(options).then((response) => {
-      console.log(response);
+      console.log(response.status);
     });
   };
 
@@ -68,10 +63,11 @@ const Lists = function () {
   };
 
   function fund() {
-    const funde = list.find((e) => parseInt(buttoninfo) === e.id);
+    let funde = list.find((e) => parseInt(buttoninfo) === e.id);
     if (!funde) {
       return null;
     }
+
     const options = [
       { value: "frühstück", label: "Frühstück" },
       { value: "mittag", label: "Mittagessen" },
@@ -117,12 +113,27 @@ const Lists = function () {
                   id="menge"
                   name="menge"
                   placeholder="100"
-                  value={input}
                   onChange={(e) => {
                     if (!input) {
                       return null;
                     } else if (input !== e.target.value) {
                       setInput(e.target.value);
+                      if (!entry) {
+                        return null;
+                      }
+                      //  else {
+                      //     setEntry({
+                      //       name: funde.name,
+                      //       menge: input,
+                      //       brennwert: (input * funde.brennwert) / 100,
+                      //       fett: (input * funde.fett) / 100,
+                      //       kohlenhydrate: (input * funde.kohlenhydrate) / 100,
+                      //       davonzucker: (input * funde.davonzucker) / 100,
+                      //       protein: (input * funde.protein) / 100,
+                      //       ballaststoffe: (input * funde.ballaststoffe) / 100,
+                      //       mahlzeit: input2,
+                      //     });
+                      //   }
                     }
                   }}
                 />
@@ -140,17 +151,7 @@ const Lists = function () {
         <button
           type="button"
           class="btn btn-primary btn-lg"
-          onClick={Post_entry(
-            funde.name,
-            funde.menge,
-            funde.brennwert,
-            funde.fett,
-            funde.kohlenhydrate,
-            funde.davonzucker,
-            funde.protein,
-            funde.ballaststoffe,
-            input2
-          )}
+          onClick={() => Post_entry(funde)}
         >
           Hinzufügen zu Tagesplan
         </button>
@@ -177,7 +178,6 @@ const Lists = function () {
               <th scope="col">davon Zucker</th>
               <th scope="col">Protein</th>
               <th scope="col">Ballaststoffe</th>
-              <th scope="col"></th>
             </tr>
           </thead>
           <tbody>
@@ -185,7 +185,7 @@ const Lists = function () {
               <tr>
                 <th scope="row">{data.id}</th>
                 <td>{data.name}</td>
-                <td>100</td>
+                <td>{data.menge}</td>
                 <td>{data.brennwert}</td>
                 <td>{data.fett}</td>
                 <td>{data.kohlenhydrate}</td>
