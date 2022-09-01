@@ -121,19 +121,6 @@ const Lists = function () {
                       if (!entry) {
                         return null;
                       }
-                      //  else {
-                      //     setEntry({
-                      //       name: funde.name,
-                      //       menge: input,
-                      //       brennwert: (input * funde.brennwert) / 100,
-                      //       fett: (input * funde.fett) / 100,
-                      //       kohlenhydrate: (input * funde.kohlenhydrate) / 100,
-                      //       davonzucker: (input * funde.davonzucker) / 100,
-                      //       protein: (input * funde.protein) / 100,
-                      //       ballaststoffe: (input * funde.ballaststoffe) / 100,
-                      //       mahlzeit: input2,
-                      //     });
-                      //   }
                     }
                   }}
                 />
