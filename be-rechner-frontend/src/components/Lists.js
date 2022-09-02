@@ -1,11 +1,13 @@
 import axios from "axios";
-
+import Select from "react-select";
 import { useEffect, useState } from "react";
 
 const Lists = function () {
   const [list, setList] = useState([]);
   const [buttoninfo, setButtoninfo] = useState([]);
-
+  const [input, setInput] = useState(100);
+  const [entry, setEntry] = useState({});
+  const [input2, setInput2] = useState("");
   const options = {
     url: "https://sugarlybackend.herokuapp.com/ingridients",
     method: "GET",
@@ -17,53 +19,71 @@ const Lists = function () {
 
   const getData = function () {
     axios(options).then((response) => {
-      setList(response.data);
+      if (!list) {
+        return null;
+      } else if (list !== response.data) {
+        setList(response.data);
+      }
     });
   };
   console.log(list);
   useEffect(() => getData(), []);
 
-  const Post_entry = (
-    name,
-    menge,
-    brennwert,
-    fett,
-    kohlenhydrate,
-    davonzucker,
-    protein,
-    ballaststoffe
-  ) => {
+  const Post_entry = (funde) => {
     const options = {
       url: "https://sugarlybackend.herokuapp.com/entrys/add",
       method: "POST",
       headers: {
         Accept: "application/json",
         "Content-Type": "application/json;charset=UTF-8",
-        name: name,
-        menge: menge,
-        brennwert: brennwert,
-        fett: fett,
-        kohlenhydrate: kohlenhydrate,
-        davonzucker: davonzucker,
-        protein: protein,
-        ballaststoffe: ballaststoffe,
+      },
+      data: {
+        name: funde.name,
+        menge: parseInt(input),
+        brennwert: (input * funde.brennwert) / 100,
+        fett: (input * funde.fett) / 100,
+        kohlenhydrate: (input * funde.kohlenhydrate) / 100,
+        davonzucker: (input * funde.davonzucker) / 100,
+        protein: (input * funde.protein) / 100,
+        ballaststoffe: (input * funde.ballaststoffe) / 100,
+        mahlzeit: input2,
       },
     };
     axios(options).then((response) => {
-      console.log(response);
+      console.log(response.status);
     });
   };
 
   const handleclick = function (e) {
-    setButtoninfo(e.target.dataset.id);
+    if (!buttoninfo) {
+      return null;
+    } else if (buttoninfo !== e.target.dataset.id) {
+      setButtoninfo(e.target.dataset.id);
+    }
   };
 
   function fund() {
-    const funde = list.find((e) => parseInt(buttoninfo) === e.id);
+    let funde = list.find((e) => parseInt(buttoninfo) === e.id);
     if (!funde) {
       return null;
     }
 
+    const options = [
+      { value: "frühstück", label: "Frühstück" },
+      { value: "mittag", label: "Mittagessen" },
+      { value: "abend", label: "Abendbrot" },
+      { value: "nacht", label: "Nachts" },
+    ];
+
+    const handleChange = (selectedOption) => {
+      if (!selectedOption) {
+        return null;
+      } else if (input2 !== selectedOption.label) {
+        setInput2(selectedOption.label);
+      }
+    };
+
+    console.log(input2);
     return (
       <div>
         <table className="table table-hover">
@@ -88,30 +108,37 @@ const Lists = function () {
             <td>
               {" "}
               <form>
-                <input type="text" id="menge" name="menge" placeholder="100" />
+                <input
+                  type="text"
+                  id="menge"
+                  name="menge"
+                  placeholder="100"
+                  onChange={(e) => {
+                    if (!input) {
+                      return null;
+                    } else if (input !== e.target.value) {
+                      setInput(e.target.value);
+                      if (!entry) {
+                        return null;
+                      }
+                    }
+                  }}
+                />
               </form>
             </td>
-            <td>{funde.brennwert}</td>
-            <td>{funde.fett}</td>
-            <td>{funde.kohlenhydrate}</td>
-            <td>{funde.davonzucker}</td>
-            <td>{funde.protein}</td>
-            <td>{funde.ballaststoffe}</td>
+            <td>{(input * funde.brennwert) / 100}</td>
+            <td>{(input * funde.fett) / 100}</td>
+            <td>{(input * funde.kohlenhydrate) / 100}</td>
+            <td>{(input * funde.davonzucker) / 100}</td>
+            <td>{(input * funde.protein) / 100}</td>
+            <td>{(input * funde.ballaststoffe) / 100}</td>
           </tbody>
         </table>
+        <Select options={options} onChange={handleChange} />
         <button
           type="button"
           class="btn btn-primary btn-lg"
-          onClick={Post_entry(
-            funde.name,
-            funde.menge,
-            funde.brennwert,
-            funde.fett,
-            funde.kohlenhydrate,
-            funde.davonzucker,
-            funde.protein,
-            funde.ballaststoffe
-          )}
+          onClick={() => Post_entry(funde)}
         >
           Hinzufügen zu Tagesplan
         </button>
@@ -138,7 +165,6 @@ const Lists = function () {
               <th scope="col">davon Zucker</th>
               <th scope="col">Protein</th>
               <th scope="col">Ballaststoffe</th>
-              <th scope="col"></th>
             </tr>
           </thead>
           <tbody>
@@ -146,7 +172,7 @@ const Lists = function () {
               <tr>
                 <th scope="row">{data.id}</th>
                 <td>{data.name}</td>
-                <td>100</td>
+                <td>{data.menge}</td>
                 <td>{data.brennwert}</td>
                 <td>{data.fett}</td>
                 <td>{data.kohlenhydrate}</td>
