@@ -4,10 +4,10 @@ import "./Footer.css";
 export default function Footer() {
   return (
     <footer className="container-fluid bg-dark text-white mt-5">
-      <div className="container">
+      <div className="container copyright">
         <div className="row py-3">
           <div className="col-5 text-left">
-            &#169; {new Date().getFullYear()} by P-R-R
+            &#169; {new Date().getFullYear()} by the epic P-R-R
           </div>
           <div className="col-7 text-right socials">
             <div>

@@ -1,0 +1,40 @@
+.accordion-body {
+}
+
+.accordion {
+  background: #ccc;
+  float: left;
+  width: 70%;
+  box-sizing: border-box;
+  box-shadow: 0 0 25px 0 rgba(0, 0, 0, 0.1);
+}
+
+.accordion-item {
+  background: #fff;
+  float: left;
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+}
+.accordion-header {
+  margin: 0px 0px 10px 0px;
+  padding: 10px;
+  font-size: 16px;
+  font-weight: 400;
+  background: #cccccc;
+  color: #fff;
+  width: 100%;
+  box-sizing: border-box;
+}
+.accordion-header img {
+  margin-right: 10px;
+  float: right;
+}
+.accordion-button {
+  background: #ccc;
+  border: none;
+}
+.accordion-button:hover {
+  background: #ccc;
+  border: none;
+}
