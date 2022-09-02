@@ -15,7 +15,7 @@ export default function LebensmittelListe() {
     <div>
       <Navbar />
       <Banner title="Lebensmittel Liste" />
-      <div className="container text-left">
+      <div className="container text-left main-content">
         <div className="row">
           <Lists />
           <div className="col-md-2 thesidebar" style={{ maxHeight: "500px" }}>

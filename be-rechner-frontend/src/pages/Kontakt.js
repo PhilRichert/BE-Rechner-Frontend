@@ -10,7 +10,7 @@ export default function Kontakt() {
     <div>
       <Navbar />
       <Banner title="Kontakt" />
-      <div className="container text-left">
+      <div className="container text-left main-content">
         <div className="row">
           <div className="col-md-6">
             <img src={heroes} alt="Lolli" width="420" height="420" />

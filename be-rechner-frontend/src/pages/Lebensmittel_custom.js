@@ -1,4 +1,5 @@
 import React from "react";
+import Prefooter from "../components/Prefooter";
 import Footer from "../components/Footer.js";
 import Navbar from "../components/Navbar.js";
 import Banner from "../components/Banner.js";
@@ -10,7 +11,7 @@ export default function Lebensmittel() {
     <div>
       <Navbar />
       <Banner title="Lebensmittel" />
-      <div className="container text-left">
+      <div className="container text-left main-content">
         <div className="row">
           <div className="col-md-6">
             <img src={lolli} alt="Lolli" width="420" height="420" />
@@ -44,6 +45,7 @@ export default function Lebensmittel() {
           </div>
         </div>
       </div>
+<Prefooter />
       <Footer />
     </div>
   );
