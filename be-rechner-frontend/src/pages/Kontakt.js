@@ -1,7 +1,8 @@
 import React from "react";
-import Footer from "../components/Footer.js";
 import Navbar from "../components/Navbar.js";
 import Banner from "../components/Banner.js";
+import Prefooter from "../components/Prefooter";
+import Footer from "../components/Footer.js";
 import heroes from "../pages/images/heroes.jpg";
 
 export default function Kontakt() {
@@ -28,6 +29,7 @@ export default function Kontakt() {
           </div>
         </div>
       </div>
+<Prefooter />
       <Footer />
     </div>
   );
