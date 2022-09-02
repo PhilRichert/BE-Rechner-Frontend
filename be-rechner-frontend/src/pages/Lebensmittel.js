@@ -15,7 +15,7 @@ export default function Lebensmittel() {
     <div>
       <Navbar />
       <Banner title="Lebensmittel" />
-      <div className="container text-left">
+      <div className="container text-left main-content">
         <div className="row">
           <div className="col-md-5 text-center">
             <img
