@@ -14,7 +14,7 @@ export default function MeineMenues() {
     <div>
       <Navbar />
       <Banner title="Meine Menüs" />
-      <div className="container text-left">
+      <div className="container text-left main-content">
         <div className="row">
           <div className="col-md-5">
             <h2>Kannste füllen</h2>
