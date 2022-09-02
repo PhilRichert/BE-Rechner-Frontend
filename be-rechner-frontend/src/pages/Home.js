@@ -1,8 +1,9 @@
 import React from "react";
 import Navbar from "../components/Navbar.js";
 import Banner from "../components/Banner.js";
+import Prefooter from "../components/Prefooter";
 import Footer from "../components/Footer.js";
-import lolli from "../pages/images/lolli2.jpg";
+import lolli from "../pages/images/start.jpg";
 import "./Main.css";
 
 export default function Home() {
@@ -10,9 +11,9 @@ export default function Home() {
     <div>
       <Navbar />
       <Banner title="Welcome Sugies!" />
-      <div className="container text-left">
+      <div className="container text-left main-content">
         <div className="row">
-          <div className="col-md-6">
+          <div className="col-md-6 text-center">
             <img src={lolli} alt="Lolli" width="420" height="420" />
           </div>
           <div className="col-md-6">
@@ -44,6 +45,8 @@ export default function Home() {
           </div>
         </div>
       </div>
+
+      <Prefooter />
       <Footer />
     </div>
   );
