@@ -1,9 +1,10 @@
 import React from "react";
-import Footer from "../components/Footer.js";
+import { Link } from "react-router-dom";
 import Navbar from "../components/Navbar.js";
 import Banner from "../components/Banner.js";
-import { Link } from "react-router-dom";
-import sweets from "../pages/images/sweets1.jpg";
+import Prefooter from "../components/Prefooter";
+import Footer from "../components/Footer.js";
+import sweets from "../pages/images/track.jpg";
 import icon1 from "../pages/images/icon1.png";
 import icon2 from "../pages/images/icon2.png";
 import icon3 from "../pages/images/icon3.png";
@@ -16,8 +17,14 @@ export default function Lebensmittel() {
       <Banner title="Lebensmittel" />
       <div className="container text-left">
         <div className="row">
-          <div className="col-md-5">
-            <img src={sweets} alt="Lolli" width="420" height="420" />
+          <div className="col-md-5 text-center">
+            <img
+              src={sweets}
+              className="noframe"
+              alt="Sweets"
+              width="450"
+              height="550"
+            />
           </div>
           <div className="col-md-5">
             <h2>Sugary - leicht und selbstbewusst unterwegs...</h2>
@@ -77,6 +84,7 @@ export default function Lebensmittel() {
           </div>
         </div>
       </div>
+<Prefooter />
       <Footer />
     </div>
   );
