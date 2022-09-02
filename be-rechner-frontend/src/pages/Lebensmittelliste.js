@@ -1,11 +1,12 @@
+import React from "react";
+import { Link } from "react-router-dom";
+import Prefooter from "../components/Prefooter";
 import Footer from "../components/Footer.js";
 import Navbar from "../components/Navbar.js";
 import Banner from "../components/Banner.js";
-import { Link } from "react-router-dom";
 import icon1 from "../pages/images/icon1.png";
 import icon2 from "../pages/images/icon2.png";
 import icon3 from "../pages/images/icon3.png";
-import React from "react";
 import Lists from "../components/Lists.js";
 import "./Main.css";
 
@@ -53,6 +54,7 @@ export default function LebensmittelListe() {
           </div>
         </div>
       </div>
+<Prefooter />
       <Footer />
     </div>
   );
