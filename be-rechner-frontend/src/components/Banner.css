@@ -1,12 +1,9 @@
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans&display=swap");
 
 .jumbotron {
-  background: rgb(45, 174, 119);
-  background: linear-gradient(
-    90deg,
-    rgba(45, 174, 119, 1) 0%,
-    rgba(221, 221, 221, 1) 100%
-  );
+  background: url("images/banner.jpg") center center;
+  background-repeat: no-repeat;
+  background-size: cover;
   color: #eee;
 }
 
