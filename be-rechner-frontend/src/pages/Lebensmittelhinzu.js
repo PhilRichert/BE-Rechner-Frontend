@@ -8,6 +8,7 @@ import icon1 from "../pages/images/icon1.png";
 import icon2 from "../pages/images/icon2.png";
 import icon3 from "../pages/images/icon3.png";
 import axios from "axios";
+import Select from "react-select";
 import "./Main.css";
 
 export default function LebensmittelHinzu() {
@@ -19,6 +20,10 @@ export default function LebensmittelHinzu() {
   const [custom_protein, setCustom_protein] = useState(0);
   const [custom_ballaststoffe, setCustom_ballaststoffe] = useState(0);
   const [list_ingridients, setList_ingridients] = useState([]);
+  const [buttoninfo, setButtoninfo] = useState([]);
+  const [input, setInput] = useState(100);
+
+  const [input2, setInput2] = useState("");
 
   const getData = function () {
     const options = {
@@ -64,6 +69,120 @@ export default function LebensmittelHinzu() {
       console.log(custom_name);
     });
   };
+
+  const Post_entry = (funde) => {
+    const options = {
+      url: "https://sugarlybackend.herokuapp.com/entrys/add",
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json;charset=UTF-8",
+      },
+      data: {
+        name: funde.name,
+        menge: parseInt(input),
+        brennwert: (input * funde.brennwert_kcal) / 100,
+        fett: (input * funde.fett) / 100,
+        kohlenhydrate: (input * funde.kohlenhydrate) / 100,
+        davonzucker: (input * funde.davon_zucker) / 100,
+        protein: (input * funde.protein) / 100,
+        ballaststoffe: (input * funde.ballaststoffe) / 100,
+        mahlzeit: input2,
+      },
+    };
+    axios(options).then((response) => {
+      console.log(response.status);
+    });
+  };
+
+  const handleclick2 = function (e) {
+    if (!buttoninfo) {
+      return null;
+    } else if (buttoninfo !== e.target.dataset.name) {
+      setButtoninfo(e.target.dataset.name);
+    }
+  };
+
+  function fund() {
+    let funde = list_ingridients.find((e) => buttoninfo === e.name);
+    if (!funde) {
+      return null;
+    }
+
+    const options = [
+      { value: "frühstück", label: "Frühstück" },
+      { value: "mittag", label: "Mittagessen" },
+      { value: "abend", label: "Abendbrot" },
+      { value: "nacht", label: "Nachts" },
+    ];
+
+    const handleChange = (selectedOption) => {
+      if (!selectedOption) {
+        return null;
+      } else if (input2 !== selectedOption.label) {
+        setInput2(selectedOption.label);
+      }
+    };
+
+    console.log(input2);
+    return (
+      <div>
+        <table className="table table-hover">
+          <thead className="thead-dark">
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Name</th>
+              <th scope="col">Menge (in g)</th>
+              <th scope="col">Brennwert (Kcal)</th>
+              <th scope="col">Fett</th>
+              <th scope="col">Kohlenhydrate</th>
+              <th scope="col">davon Zucker</th>
+              <th scope="col">Protein</th>
+              <th scope="col">Ballaststoffe</th>
+              <th scope="col"></th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <th scope="row">{funde.id}</th>
+            <td>{funde.name}</td>
+            <td>
+              {" "}
+              <form>
+                <input
+                  type="text"
+                  id="menge"
+                  name="menge"
+                  placeholder="100"
+                  onChange={(e) => {
+                    if (!input) {
+                      return null;
+                    } else if (input !== e.target.value) {
+                      setInput(e.target.value);
+                    }
+                  }}
+                />
+              </form>
+            </td>
+            <td>{(input * funde.brennwert_kcal) / 100}</td>
+            <td>{(input * funde.fett) / 100}</td>
+            <td>{(input * funde.kohlenhydrate) / 100}</td>
+            <td>{(input * funde.davon_zucker) / 100}</td>
+            <td>{(input * funde.protein) / 100}</td>
+            <td>{(input * funde.ballaststoffe) / 100}</td>
+          </tbody>
+        </table>
+        <Select options={options} onChange={handleChange} />
+        <button
+          type="button"
+          class="btn btn-primary btn-lg"
+          onClick={() => Post_entry(funde)}
+        >
+          Hinzufügen zu Tagesplan
+        </button>
+      </div>
+    );
+  }
 
   return (
     <div>
@@ -265,8 +384,8 @@ export default function LebensmittelHinzu() {
                       class="btn btn-primary"
                       data-toggle="modal"
                       data-target=".bd-example-modal-lg"
-                      data-id={data.id}
-                      onClick={handleclick}
+                      data-name={data.name}
+                      onClick={handleclick2}
                     >
                       Hinzufügen zu...
                     </button>
@@ -279,7 +398,7 @@ export default function LebensmittelHinzu() {
                       aria-hidden="true"
                     >
                       <div class="modal-dialog modal-lg">
-                        <div class="modal-content"></div>
+                        <div class="modal-content">{fund()}</div>
                       </div>
                     </div>
                   </td>
