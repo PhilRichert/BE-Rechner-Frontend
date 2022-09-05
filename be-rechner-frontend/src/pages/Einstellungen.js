@@ -12,13 +12,45 @@ export default function Einstellungen() {
   const [title2, setTitle2] = useState(0);
   const [title3, setTitle3] = useState(0);
   const [title4, setTitle4] = useState(0);
+  const [currentsettings, setCurrentSettings] = useState([]);
+
   console.log(title, title2, title3, title4);
+
+  const getData = function () {
+    const options = {
+      url: "https://sugarlybackend.herokuapp.com/settings",
+      method: "GET",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json;charset=UTF-8",
+      },
+    };
+    axios(options).then((response) => {
+      if (!currentsettings) {
+        return null;
+      } else if (currentsettings !== response.data) {
+        setCurrentSettings(response.data);
+      }
+    });
+  };
+
+  useEffect(() => getData(), []);
+
+  console.log(currentsettings);
+
+  // const showsettings = function () {
+  //   const info = currentsettings.find((e) => {
+  //     e.id == "1";
+  //   });
+  //   console.log(info);
+  // };
+  // console.log(showsettings);
 
   const handleclick = function () {
     // if()
     const options = {
       url: "https://sugarlybackend.herokuapp.com/settings",
-      method: "POST",
+      method: "PUT",
       headers: {
         Accept: "application/json",
         "Content-Type": "application/json;charset=UTF-8",
@@ -35,10 +67,27 @@ export default function Einstellungen() {
     });
   };
 
+  console.log(title);
   return (
     <div>
       <Navbar />
       <Banner title="Welcome Sugies!" />
+      <div class="card" style={{ width: "18rem" }}>
+        <div class="card-body">
+          <h5 class="card-title">Aktuelle Einstellungen</h5>
+
+          <p class="card-text"></p>
+        </div>
+      </div>
+      {/* {currentsettings.map((data) => {
+          <ul>
+            <li>{data.Faktor_morgens}</li>
+            <li>{data.Faktor_mittags}</li>
+            <li>{data.Faktor_abends}</li>
+            <li>{data.Faktor_nachts}</li>
+          </ul>;
+          <p>was soll das </p>;
+        })} */}
       <div className="card">
         <div className="card-body">
           <h2>Einstellungen</h2>
@@ -46,14 +95,17 @@ export default function Einstellungen() {
             <label>Faktor morgens</label>
             <input
               type="text"
-              placeholder="0"
-              defaultValue={title}
+              // placeholder={obj.Faktor_morgens}
+              value={title}
               onChange={(e) => {
-                if (!title) {
-                  return null;
-                } else if (title !== e.target.value) {
-                  setTitle(e.target.value);
-                }
+                // if (!title) {
+                //   return null;
+                // } else if (title !== e.target.value) {
+                //   console.log(e.target.value);
+                //   setTitle(e.target.value);
+                // }
+                console.log(e.target.value);
+                setTitle(e.target.value);
               }}
             />
           </form>
@@ -61,14 +113,15 @@ export default function Einstellungen() {
             <label>Faktor Mittags</label>
             <input
               type="text"
-              defaultValue={title2}
-              placeholder="0"
+              value={title2}
+              // placeholder={obj.Faktor_mittags}
               onChange={(e) => {
-                if (!title2) {
-                  return null;
-                } else if (title2 !== e.target.value) {
-                  setTitle2(e.target.value);
-                }
+                // if (!title2) {
+                //   return null;
+                // } else if (title2 !== e.target.value) {
+                //   setTitle2(e.target.value);
+                // }
+                setTitle2(e.target.value);
               }}
             />
           </form>
@@ -76,14 +129,15 @@ export default function Einstellungen() {
             <label>Faktor Abends</label>
             <input
               type="text"
-              defaultValue={title3}
-              placeholder="0"
+              value={title3}
+              // placeholder={obj.Faktor_abends}
               onChange={(e) => {
-                if (!title3) {
-                  return null;
-                } else if (title3 !== e.target.value) {
-                  setTitle3(e.target.value);
-                }
+                // if (!title3) {
+                //   return null;
+                // } else if (title3 !== e.target.value) {
+                //   setTitle3(e.target.value);
+                // }
+                setTitle3(e.target.value);
               }}
             />
           </form>
@@ -91,14 +145,15 @@ export default function Einstellungen() {
             <label>Faktor Nachts</label>
             <input
               type="text"
-              defaultValue={title4}
-              placeholder="0"
+              value={title4}
+              // placeholder={obj.Faktor_nachts}
               onChange={(e) => {
-                if (!title4) {
-                  return null;
-                } else if (title4 !== e.target.value) {
-                  setTitle4(e.target.value);
-                }
+                // if (!title4) {
+                //   return null;
+                // } else if (title4 !== e.target.value) {
+                //   setTitle4(e.target.value);
+                // }
+                setTitle4(e.target.value);
               }}
             />
           </form>
@@ -110,7 +165,7 @@ export default function Einstellungen() {
             onClick={() => handleclick()}
           >
             Bestätigen
-          </button>
+          </button>{" "}
         </div>
       </div>
 
