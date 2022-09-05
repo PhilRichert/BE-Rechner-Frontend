@@ -61,7 +61,7 @@ export default function Einstellungen() {
             <label>Faktor Mittags</label>
             <input
               type="text"
-              value={title2}
+              defaultValue={title2}
               placeholder="0"
               onChange={(e) => {
                 if (!title2) {
@@ -76,7 +76,7 @@ export default function Einstellungen() {
             <label>Faktor Abends</label>
             <input
               type="text"
-              value={title3}
+              defaultValue={title3}
               placeholder="0"
               onChange={(e) => {
                 if (!title3) {
@@ -91,7 +91,7 @@ export default function Einstellungen() {
             <label>Faktor Nachts</label>
             <input
               type="text"
-              value={title4}
+              defaultValue={title4}
               placeholder="0"
               onChange={(e) => {
                 if (!title4) {
