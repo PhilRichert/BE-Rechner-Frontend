@@ -175,119 +175,84 @@ export default function NewEntry() {
   console.log(einstellungen[0].Faktor_morgens);
   return (
     <div>
-      <Navbar />
-      <Banner title="Neuer Eintrag" />
-      <div className="container">
-        <h2>Frühstück</h2>
-        <div>{findmahlzeit("Frühstück")}</div>
-        <div>
-          <p>
+   <Navbar />
+      <Banner title="Meine Einträge" />
+      <div className="container text-left main-content">
+        <div className="row">
+          <div className="col-md-12">
+            <div className="mahlzeit">
+              <h2 className="h2-eintrag">Frühstück</h2>
+              <div>{findmahlzeit("Frühstück")}</div>
+              <div className="ergebnis-eintrag">
             {gesamt_berechnen(
               "Frühstück",
               "BE",
               einstellungen[0].Faktor_morgens
             )}
-          </p>
-          <p>
             {gesamt_berechnen(
               "Frühstück",
               "KE",
               einstellungen[0].Faktor_morgens
             )}
-          </p>
-          <p>
             {gesamt_berechnen_FPE("Frühstück", einstellungen[0].Faktor_morgens)}
-          </p>
-        </div>
-        <p> &nbsp;</p>
-        <p> &nbsp;</p>
+              </div>
+            </div>
 
-        <h2>Zwischenmahlzeit 1</h2>
-        <p>
-          Maecenas dapibus, est posuere eleifend rutrum, lectus ligula gravida
-          urna, at pretium dui turpis non lorem.
-        </p>
-        <p> &nbsp;</p>
-        <p> &nbsp;</p>
 
-        <h>Mittag</h>
-        <div>
-          <p>{findmahlzeit("Mittagessen")}</p>
-          <div>
-            <p>
+            <div className="mahlzeit">
+              <h2 className="h2-eintrag">Mittag</h2>
+              <div>{findmahlzeit("Mittagessen")}</div>
+              <div className="ergebnis-eintrag">
               {gesamt_berechnen(
                 "Mittagessen",
                 "BE",
                 einstellungen[0].Faktor_mittags
               )}
-            </p>
-            <p>
               {gesamt_berechnen(
                 "Mittagessen",
                 "KE",
                 einstellungen[0].Faktor_mittags
               )}
-            </p>
-            <p>
               {gesamt_berechnen_FPE(
                 "Mittagessen",
                 einstellungen[0].Faktor_mittags
               )}
-            </p>
-          </div>
-        </div>
-        <p> &nbsp;</p>
-        <p> &nbsp;</p>
-        <h2>Zwischenmahlzeit 2</h2>
-        <p>
-          Maecenas dapibus, est posuere eleifend rutrum, lectus ligula gravida
-          urna, at pretium dui turpis non lorem.
-        </p>
-        <p> &nbsp;</p>
-        <p> &nbsp;</p>
-        <h2>Abendessen</h2>
-        <div>
-          <p>{findmahlzeit("Abendbrot")}</p>
-          <div>
-            <p>
+              </div>
+            </div>
+        
+            <div className="mahlzeit">
+              <h2 className="h2-eintrag">Abendessen</h2>
+              <div>{findmahlzeit("Abendbrot")}</div>
+              <div className="ergebnis-eintrag">
               {gesamt_berechnen(
                 "Abendbrot",
                 "BE",
                 einstellungen[0].Faktor_abends
               )}
-            </p>
-            <p>
               {gesamt_berechnen(
                 "Abendbrot",
                 "KE",
                 einstellungen[0].Faktor_abends
               )}
-            </p>
-            <p>
               {gesamt_berechnen_FPE(
                 "Abendbrot",
                 einstellungen[0].Faktor_abends
               )}
-            </p>
-          </div>
-        </div>
-        <p> &nbsp;</p>
-        <p> &nbsp;</p>
-        <h2>Spätmahlzeit</h2>
-        <p>{findmahlzeit("Nachts")}</p>
-        <div>
-          <p>
+              </div>
+            </div>
+       
+
+            <div className="mahlzeit">
+              <h2 className="h2-eintrag">Spätmahlzeit</h2>
+              <div>{findmahlzeit("Nachts")}</div>
+              <div className="ergebnis-eintrag">
             {gesamt_berechnen("Nachts", "BE", einstellungen[0].Faktor_nachts)}
-          </p>
-          <p>
             {gesamt_berechnen("Nachts", "KE", einstellungen[0].Faktor_nachts)}
-          </p>
-          <p>
             {gesamt_berechnen_FPE("Nachts", einstellungen[0].Faktor_nachts)}
-          </p>
+              </div>
+            </div>
+          </div>
         </div>
-        <p> &nbsp;</p>
-        <p> &nbsp;</p>
       </div>
       <Prefooter />
       <Footer />
