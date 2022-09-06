@@ -3,19 +3,18 @@ import Select from "react-select";
 import { useEffect, useState } from "react";
 
 const Lists = function () {
-  const [loading, setLoading] = useState(true);
   const [list, setList] = useState([]);
   const [buttoninfo, setButtoninfo] = useState([]);
   const [input, setInput] = useState(100);
-
+  const [entry, setEntry] = useState({});
   const [input2, setInput2] = useState("");
   const options = {
     url: "https://sugarlybackend.herokuapp.com/ingridients",
     method: "GET",
     headers: {
       Accept: "application/json",
-      "Content-Type": "application/json;charset=UTF-8",
-    },
+      "Content-Type": "application/json;charset=UTF-8"
+    }
   };
 
   const getData = function () {
@@ -24,16 +23,11 @@ const Lists = function () {
         return null;
       } else if (list !== response.data) {
         setList(response.data);
-        setLoading(false);
       }
     });
   };
   console.log(list);
   useEffect(() => getData(), []);
-
-  if (loading) {
-    return <div>loading....</div>;
-  }
 
   const Post_entry = (funde) => {
     const options = {
@@ -41,7 +35,7 @@ const Lists = function () {
       method: "POST",
       headers: {
         Accept: "application/json",
-        "Content-Type": "application/json;charset=UTF-8",
+        "Content-Type": "application/json;charset=UTF-8"
       },
       data: {
         name: funde.name,
@@ -52,8 +46,8 @@ const Lists = function () {
         davonzucker: (input * funde.davonzucker) / 100,
         protein: (input * funde.protein) / 100,
         ballaststoffe: (input * funde.ballaststoffe) / 100,
-        mahlzeit: input2,
-      },
+        mahlzeit: input2
+      }
     };
     axios(options).then((response) => {
       console.log(response.status);
@@ -78,7 +72,7 @@ const Lists = function () {
       { value: "frühstück", label: "Frühstück" },
       { value: "mittag", label: "Mittagessen" },
       { value: "abend", label: "Abendbrot" },
-      { value: "nacht", label: "Nachts" },
+      { value: "nacht", label: "Nachts" }
     ];
 
     const handleChange = (selectedOption) => {
@@ -92,10 +86,9 @@ const Lists = function () {
     console.log(input2);
     return (
       <div>
-        <table className="table">
+        <table className="table table-hover">
           <thead className="thead-dark">
             <tr>
-              <th scope="col">#</th>
               <th scope="col">Name</th>
               <th scope="col">Menge (in g)</th>
               <th scope="col">Brennwert (Kcal)</th>
@@ -104,13 +97,13 @@ const Lists = function () {
               <th scope="col">davon Zucker</th>
               <th scope="col">Protein</th>
               <th scope="col">Ballaststoffe</th>
-              <th scope="col"></th>
+              <th scope="col">&nbsp;</th>
             </tr>
           </thead>
 
           <tbody>
-            <th scope="row">{funde.id}</th>
-            <td>{funde.name}</td>
+            <th scope="row">{funde.name}</th>
+
             <td>
               {" "}
               <form>
@@ -124,6 +117,9 @@ const Lists = function () {
                       return null;
                     } else if (input !== e.target.value) {
                       setInput(e.target.value);
+                      if (!entry) {
+                        return null;
+                      }
                     }
                   }}
                 />
@@ -137,7 +133,9 @@ const Lists = function () {
             <td>{(input * funde.ballaststoffe) / 100}</td>
           </tbody>
         </table>
+        <p>&nbsp;</p>
         <Select options={options} onChange={handleChange} />
+        <p>&nbsp;</p>
         <button
           type="button"
           class="btn btn-primary btn-lg"
@@ -145,6 +143,7 @@ const Lists = function () {
         >
           Hinzufügen zu Tagesplan
         </button>
+        <p>&nbsp;</p>
       </div>
     );
   }
@@ -158,23 +157,30 @@ const Lists = function () {
         <table className="table">
           <thead className="thead-dark">
             <tr>
-              <th scope="col">#</th>
-              <th scope="col">Name</th>
-              <th scope="col">Menge (in g)</th>
+              <th scope="col" className="the5">
+                Name
+              </th>
+
+              <th scope="col">
+                Menge <br />
+                (in g)
+              </th>
               <th scope="col">Brennwert (Kcal)</th>
               <th scope="col">Fett</th>
               <th scope="col">Kohlenhydrate</th>
               <th scope="col">davon Zucker</th>
               <th scope="col">Protein</th>
               <th scope="col">Ballaststoffe</th>
-<th scope="col">&nbsp;</th>
+              <th scope="col">&nbsp;</th>
             </tr>
           </thead>
           <tbody>
             {list.map((data) => (
               <tr>
-                <th scope="row">{data.id}</th>
-                <td>{data.name}</td>
+                <th scope="row" className="the5">
+                  {data.name}
+                </th>
+
                 <td>{data.menge}</td>
                 <td>{data.brennwert}</td>
                 <td>{data.fett}</td>
