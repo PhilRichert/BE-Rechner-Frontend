@@ -11,11 +11,10 @@ export default function LebensmittelListe() {
   return (
     <div>
       <Navbar />
-      <Banner title="Lebensmittel Liste" />
+      <Banner title="Meine Lebensmittelliste" />
       <div className="container text-left main-content">
         <div className="row">
           <div className="col lebensmittelliste">
-            <h2>Meine Lebensmittelliste</h2>
             <Lists />
           </div>
         </div>
