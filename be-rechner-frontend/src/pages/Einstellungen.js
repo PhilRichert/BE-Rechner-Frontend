@@ -6,6 +6,7 @@ import Footer from "../components/Footer.js";
 import Navbar from "../components/Navbar.js";
 import Banner from "../components/Banner.js";
 import Prefooter from "../components/Prefooter.js";
+import lolli from "../pages/images/diabetes-2.jpg";
 
 export default function Einstellungen() {
   const [loading, setLoading] = useState(true);
@@ -83,20 +84,18 @@ export default function Einstellungen() {
   return (
     <div>
       <Navbar />
-      <Banner title="Welcome Sugies!" />
-      <div class="card" style={{ width: "18rem" }}>
-        <div class="card-body">
-          <h5 class="card-title">Aktuelle Einstellungen</h5>
+      <Banner title="Einstellungen" />
+      <div className="container text-left main-content">
+        <div className="row">
+          <div className="col-md-6 text-center">
+            <img src={lolli} alt="Diabeteswerte" width="420" height="320" />
+          </div>
+          <div className="col-md-6">
+            <p>Bitte gib hier deine aktuellen Werte ein.</p>
+            <div className="einstellungen">
+              <form class="form-wert">
+                <label>Faktor morgens:</label>
 
-          <p class="card-text">{showsettings()}</p>
-        </div>
-      </div>
-
-      <div className="card">
-        <div className="card-body">
-          <h2>Einstellungen</h2>
-          <form className="form-control form-control-sm">
-            <label>Faktor morgens</label>
             <input
               type="text"
               // placeholder={obj.Faktor_morgens}
@@ -113,8 +112,8 @@ export default function Einstellungen() {
               }}
             />
           </form>
-          <form className="form-control form-control-sm">
-            <label>Faktor Mittags</label>
+              <form class="form-wert">
+                <label>Faktor Mittags:</label>
             <input
               type="text"
               value={title2}
@@ -129,8 +128,8 @@ export default function Einstellungen() {
               }}
             />
           </form>
-          <form className="form-control form-control-sm">
-            <label>Faktor Abends</label>
+              <form class="form-wert">
+                <label>Faktor Abends: </label>
             <input
               type="text"
               value={title3}
@@ -145,8 +144,8 @@ export default function Einstellungen() {
               }}
             />
           </form>
-          <form class="form-control form-control-sm">
-            <label>Faktor Nachts</label>
+              <form class="form-wert">
+                <label>Faktor Nachts: </label>
             <input
               type="text"
               value={title4}
@@ -161,8 +160,7 @@ export default function Einstellungen() {
               }}
             />
           </form>
-        </div>
-        <div>
+
           <button
             className="btn btn-primary"
             type="submit"
@@ -171,8 +169,9 @@ export default function Einstellungen() {
             Bestätigen
           </button>{" "}
         </div>
+          </div>
+        </div>
       </div>
-
       <Prefooter />
       <Footer />
     </div>
