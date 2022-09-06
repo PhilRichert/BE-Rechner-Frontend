@@ -1,9 +1,13 @@
 import React from "react";
+import Accordion from "react-bootstrap/Accordion";
 import { useState, useEffect } from "react";
 import axios from "axios";
+import Prefooter from "../components/Prefooter";
 import Footer from "../components/Footer.js";
 import Navbar from "../components/Navbar.js";
 import Banner from "../components/Banner.js";
+import infocircle from "../pages/images/info-circle.png";
+import "./Main.css";
 
 export default function NewEntry() {
   const [loading, setLoading] = useState(true);
@@ -72,40 +76,46 @@ export default function NewEntry() {
     // console.log(mahlzeiten2);
 
     return mahlzeiten.map((e) => (
-      <div>
-        <table class="table table-hover">
-          <thead className="thead-dark">
-            <tr>
-              <th scope="col">#</th>
-              <th scope="col">Name</th>
-              <th scope="col">Menge (in g)</th>
-              <th scope="col">Brennwert (Kcal)</th>
-              <th scope="col">Fett</th>
-              <th scope="col">Kohlenhydrate</th>
-              <th scope="col">davon Zucker</th>
-              <th scope="col">Protein</th>
-              <th scope="col">Ballaststoffe</th>
-              <th scope="col">BE</th>
-              <th scope="col">KE</th>
-              <th scope="col">FPE</th>
-            </tr>
-          </thead>
-          <tbody>
-            <th scope="row">{e.id}</th>
-            <td>{e.name}</td>
-            <td>{e.menge}</td>
-            <td>{e.brennwert}</td>
-            <td>{e.fett}</td>
-            <td>{e.kohlenhydrate}</td>
-            <td>{e.davonzucker}</td>
-            <td>{e.protein}</td>
-            <td>{e.ballaststoffe}</td>
-            <td>{e.kohlenhydrate / 12}</td>
-            <td>{e.kohlenhydrate / 10}</td>
-            <td>{(e.fett * 9) / 100 + (e.protein * 4) / 100} </td>
-          </tbody>
-        </table>
-      </div>
+      <Accordion>
+        <Accordion.Item eventKey="0">
+          <Accordion.Header>
+            {e.name}
+            <img src={infocircle} alt="Info" width="25" height="25" />
+          </Accordion.Header>
+          <Accordion.Body>
+            <div>
+              <table class="table table-hover watisdrin">
+                <thead className="thead-dark">
+                  <tr>
+                    <th scope="col">Menge (in g)</th>
+                    <th scope="col">Brennwert (Kcal)</th>
+                    <th scope="col">Fett</th>
+                    <th scope="col">Kohlenhydrate</th>
+                    <th scope="col">davon Zucker</th>
+                    <th scope="col">Protein</th>
+                    <th scope="col">Ballaststoffe</th>
+                    <th scope="col">BE</th>
+                    <th scope="col">KE</th>
+                    <th scope="col">FPE</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <th scope="row">{e.menge}</th>
+                  <td>{e.brennwert}</td>
+                  <td>{e.fett}</td>
+                  <td>{e.kohlenhydrate}</td>
+                  <td>{e.davonzucker}</td>
+                  <td>{e.protein}</td>
+                  <td>{e.ballaststoffe}</td>
+                  <td>{e.kohlenhydrate / 12}</td>
+                  <td>{e.kohlenhydrate / 10}</td>
+                  <td>{(e.fett * 9) / 100 + (e.protein * 4) / 100} </td>
+                </tbody>
+              </table>
+            </div>
+          </Accordion.Body>
+        </Accordion.Item>
+      </Accordion>
     ));
   }
 
@@ -146,6 +156,7 @@ export default function NewEntry() {
     let gesamt_protein = mahlzeiten3.reduce((total, item) => {
       return total + item.protein;
     }, 0);
+
     console.log(gesamt_fett, gesamt_protein);
     return (
       <div>
@@ -278,6 +289,7 @@ export default function NewEntry() {
         <p> &nbsp;</p>
         <p> &nbsp;</p>
       </div>
+      <Prefooter />
       <Footer />
     </div>
   );
