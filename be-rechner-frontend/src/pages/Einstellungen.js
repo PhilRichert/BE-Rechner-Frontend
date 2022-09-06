@@ -38,13 +38,19 @@ export default function Einstellungen() {
 
   console.log(currentsettings);
 
-  // const showsettings = function () {
-  //   const info = currentsettings.find((e) => {
-  //     e.id == "1";
-  //   });
-  //   console.log(info);
-  // };
-  // console.log(showsettings);
+  const showsettings = function () {
+    const einstellungen = currentsettings.filter((e) => e.id === 1);
+    return (
+      <div>
+        <ul>
+          <li>Faktor_morgens:{einstellungen[0].Faktor_morgens}</li>
+          <li>Faktor_mittags:{einstellungen[0].Faktor_mittags}</li>
+          <li>Faktor_abends:{einstellungen[0].Faktor_abends}</li>
+          <li>Faktor_nachts:{einstellungen[0].Faktor_nachts}</li>
+        </ul>
+      </div>
+    );
+  };
 
   const handleclick = function () {
     // if()
@@ -76,18 +82,10 @@ export default function Einstellungen() {
         <div class="card-body">
           <h5 class="card-title">Aktuelle Einstellungen</h5>
 
-          <p class="card-text"></p>
+          <p class="card-text">{showsettings()}</p>
         </div>
       </div>
-      {/* {currentsettings.map((data) => {
-          <ul>
-            <li>{data.Faktor_morgens}</li>
-            <li>{data.Faktor_mittags}</li>
-            <li>{data.Faktor_abends}</li>
-            <li>{data.Faktor_nachts}</li>
-          </ul>;
-          <p>was soll das </p>;
-        })} */}
+
       <div className="card">
         <div className="card-body">
           <h2>Einstellungen</h2>

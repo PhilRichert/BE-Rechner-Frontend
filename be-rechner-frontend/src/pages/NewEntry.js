@@ -7,7 +7,25 @@ import Banner from "../components/Banner.js";
 
 export default function NewEntry() {
   const [allentrys, setAllEntrys] = useState([]);
+  const [currentsettings, setCurrentSettings] = useState([]);
 
+  const getData2 = function () {
+    const options2 = {
+      url: "https://sugarlybackend.herokuapp.com/settings",
+      method: "GET",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json;charset=UTF-8",
+      },
+    };
+    axios(options2).then((response) => {
+      if (!currentsettings) {
+        return null;
+      } else if (currentsettings !== response.data) {
+        setCurrentSettings(response.data);
+      }
+    });
+  };
 
   const options = {
     url: "https://sugarlybackend.herokuapp.com/entrys/add",
@@ -26,10 +44,18 @@ export default function NewEntry() {
         setAllEntrys(response.data);
       }
     });
+    getData2();
   };
 
   useEffect(() => getData(), []);
-  console.log(allentrys);
+
+  const einstellungen = function () {
+    if (!currentsettings) {
+      return null;
+    } else {
+      return currentsettings.filter((e) => e.id === 1);
+    }
+  };
 
   function findmahlzeit(mahlzeit) {
     const mahlzeiten = allentrys.filter((e) => mahlzeit === e.mahlzeit);
@@ -76,51 +102,66 @@ export default function NewEntry() {
             <td>{e.ballaststoffe}</td>
             <td>{e.kohlenhydrate / 12}</td>
             <td>{e.kohlenhydrate / 10}</td>
-            <td>{(e.fett * 9 /100) + (e.protein * 4 /100) } </td>
+            <td>{(e.fett * 9) / 100 + (e.protein * 4) / 100} </td>
           </tbody>
         </table>
       </div>
     ));
   }
 
-  const gesamt_berechnen = function (mahlzeit, zielwert) {
+  const gesamt_berechnen = function (mahlzeit, zielwert, Faktor) {
     const mahlzeiten2 = allentrys.filter((e) => mahlzeit === e.mahlzeit);
+
     let gesamt = mahlzeiten2.reduce((total, item) => {
       return total + item.kohlenhydrate;
     }, 0);
     if (zielwert === "BE") {
       return (
-        <p>
-          {" "}
-          Die gesamt {zielwert} betragen: {gesamt / 12}
-        </p>
+        <div>
+          <p>
+            {" "}
+            Die gesamt {zielwert} betragen: {gesamt / 12}
+          </p>
+          <p>Für BE abzugebenes Insulin: {(gesamt / 12) * Faktor} IE </p>
+        </div>
       );
     } else if (zielwert === "KE") {
       return (
-        <p>
-          {" "}
-          Die gesamt {zielwert} betragen: {gesamt / 10}
-        </p>
+        <div>
+          <p>
+            {" "}
+            Die gesamt {zielwert} betragen: {gesamt / 10}
+          </p>
+          <p>Für KE abzugebenes Insulin: {(gesamt / 10) * Faktor} IE </p>
+        </div>
       );
     }
   };
 
-  const gesamt_berechnen_FPE = function (mahlzeit) {
+  const gesamt_berechnen_FPE = function (mahlzeit, Faktor) {
     const mahlzeiten3 = allentrys.filter((e) => mahlzeit === e.mahlzeit);
     let gesamt_fett = mahlzeiten3.reduce((total, item) => {
       return total + item.fett;
     }, 0);
     let gesamt_protein = mahlzeiten3.reduce((total, item) => {
       return total + item.protein;
-    }, 0);console.log(gesamt_fett,gesamt_protein)
+    }, 0);
+    console.log(gesamt_fett, gesamt_protein);
     return (
-      <p>
-        Die gesamt FPE betragen{(gesamt_fett * 9/100) + (gesamt_protein * 4/100)}
-      </p>
+      <div>
+        <p>
+          Die gesamt FPE betragen
+          {(gesamt_fett * 9) / 100 + (gesamt_protein * 4) / 100}
+        </p>
+        <p>
+          Für FPE abzugebenes Insulin :{" "}
+          {((gesamt_fett * 9) / 100 + (gesamt_protein * 4) / 100) * Faktor} IE
+        </p>
+      </div>
     );
-    
   };
-
+  console.log(einstellungen);
+  console.log(einstellungen[0].Faktor_morgens);
   return (
     <div>
       <Navbar />
@@ -129,9 +170,23 @@ export default function NewEntry() {
         <h2>Frühstück</h2>
         <div>{findmahlzeit("Frühstück")}</div>
         <div>
-          <p>{gesamt_berechnen("Frühstück", "BE")}</p>
-          <p>{gesamt_berechnen("Frühstück", "KE")}</p>
-          <p>{gesamt_berechnen_FPE("Frühstück")}</p>
+          <p>
+            {gesamt_berechnen(
+              "Frühstück",
+              "BE",
+              einstellungen[0].Faktor_morgens
+            )}
+          </p>
+          <p>
+            {gesamt_berechnen(
+              "Frühstück",
+              "KE",
+              einstellungen[0].Faktor_morgens
+            )}
+          </p>
+          <p>
+            {gesamt_berechnen_FPE("Frühstück", einstellungen[0].Faktor_morgens)}
+          </p>
         </div>
         <p> &nbsp;</p>
         <p> &nbsp;</p>
@@ -144,14 +199,32 @@ export default function NewEntry() {
         <p> &nbsp;</p>
         <p> &nbsp;</p>
 
-        <h2>Mittag</h2>
+        <h>Mittag</h>
         <div>
-        <p>{findmahlzeit("Mittagessen")}</p>
-        <div><p>{gesamt_berechnen("Mittagessen", "BE")}</p>
-        <p>{gesamt_berechnen("Mittagessen", "KE")}</p>
-          <p>{gesamt_berechnen_FPE("Mittagessen")}</p>
+          <p>{findmahlzeit("Mittagessen")}</p>
+          <div>
+            <p>
+              {gesamt_berechnen(
+                "Mittagessen",
+                "BE",
+                einstellungen[0].Faktor_mittags
+              )}
+            </p>
+            <p>
+              {gesamt_berechnen(
+                "Mittagessen",
+                "KE",
+                einstellungen[0].Faktor_mittags
+              )}
+            </p>
+            <p>
+              {gesamt_berechnen_FPE(
+                "Mittagessen",
+                einstellungen[0].Faktor_mittags
+              )}
+            </p>
           </div>
-          </div>
+        </div>
         <p> &nbsp;</p>
         <p> &nbsp;</p>
         <h2>Zwischenmahlzeit 2</h2>
@@ -163,22 +236,45 @@ export default function NewEntry() {
         <p> &nbsp;</p>
         <h2>Abendessen</h2>
         <div>
-        <p>{findmahlzeit("Abendbrot")}</p>
-        <div>
-        <p>{gesamt_berechnen("Abendbrot", "BE")}</p>
-        <p>{gesamt_berechnen("Abendbrot", "KE")}</p>
-          <p>{gesamt_berechnen_FPE("Abendbrot")}</p>
+          <p>{findmahlzeit("Abendbrot")}</p>
+          <div>
+            <p>
+              {gesamt_berechnen(
+                "Abendbrot",
+                "BE",
+                einstellungen[0].Faktor_abends
+              )}
+            </p>
+            <p>
+              {gesamt_berechnen(
+                "Abendbrot",
+                "KE",
+                einstellungen[0].Faktor_abends
+              )}
+            </p>
+            <p>
+              {gesamt_berechnen_FPE(
+                "Abendbrot",
+                einstellungen[0].Faktor_abends
+              )}
+            </p>
           </div>
-          </div>
+        </div>
         <p> &nbsp;</p>
         <p> &nbsp;</p>
         <h2>Spätmahlzeit</h2>
         <p>{findmahlzeit("Nachts")}</p>
         <div>
-        <p>{gesamt_berechnen("Nachts", "BE")}</p>
-        <p>{gesamt_berechnen("Nachts", "KE")}</p>
-          <p>{gesamt_berechnen_FPE("Nachts")}</p>
-          </div>
+          <p>
+            {gesamt_berechnen("Nachts", "BE", einstellungen[0].Faktor_nachts)}
+          </p>
+          <p>
+            {gesamt_berechnen("Nachts", "KE", einstellungen[0].Faktor_nachts)}
+          </p>
+          <p>
+            {gesamt_berechnen_FPE("Nachts", einstellungen[0].Faktor_nachts)}
+          </p>
+        </div>
         <p> &nbsp;</p>
         <p> &nbsp;</p>
       </div>

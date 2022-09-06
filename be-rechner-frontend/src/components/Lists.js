@@ -144,7 +144,7 @@ const Lists = function () {
   }
 
   return (
-    <article className="col-md-5">
+    <div className="col-md-5">
       <h2>Alle Lebensmittel</h2>
       {/* {loading && <p>Loading...</p>}
       {!loading && error && <p className="errMsg">{error}</p>}
@@ -206,7 +206,7 @@ const Lists = function () {
           </tbody>
         </table>
       </div>
-    </article>
+    </div>
   );
 };
 export default Lists;
