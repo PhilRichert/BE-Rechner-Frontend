@@ -6,7 +6,7 @@ const Lists = function () {
   const [list, setList] = useState([]);
   const [buttoninfo, setButtoninfo] = useState([]);
   const [input, setInput] = useState(100);
-  const [entry, setEntry] = useState({});
+
   const [input2, setInput2] = useState("");
   const options = {
     url: "https://sugarlybackend.herokuapp.com/ingridients",
@@ -118,9 +118,6 @@ const Lists = function () {
                       return null;
                     } else if (input !== e.target.value) {
                       setInput(e.target.value);
-                      if (!entry) {
-                        return null;
-                      }
                     }
                   }}
                 />
@@ -147,7 +144,7 @@ const Lists = function () {
   }
 
   return (
-    <article className="col-md-5">
+    <div className="col-md-5">
       <h2>Alle Lebensmittel</h2>
       {/* {loading && <p>Loading...</p>}
       {!loading && error && <p className="errMsg">{error}</p>}
@@ -209,7 +206,7 @@ const Lists = function () {
           </tbody>
         </table>
       </div>
-    </article>
+    </div>
   );
 };
 export default Lists;
