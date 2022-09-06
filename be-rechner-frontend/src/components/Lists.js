@@ -92,7 +92,7 @@ const Lists = function () {
     console.log(input2);
     return (
       <div>
-        <table className="table table-hover">
+        <table className="table">
           <thead className="thead-dark">
             <tr>
               <th scope="col">#</th>
@@ -150,13 +150,12 @@ const Lists = function () {
   }
 
   return (
-    <div className="col-md-5">
-      <h2>Alle Lebensmittel</h2>
+    <div>
       {/* {loading && <p>Loading...</p>}
       {!loading && error && <p className="errMsg">{error}</p>}
       {!loading && !error && list && ( */}
       <div>
-        <table className="table table-hover">
+        <table className="table">
           <thead className="thead-dark">
             <tr>
               <th scope="col">#</th>
@@ -168,6 +167,7 @@ const Lists = function () {
               <th scope="col">davon Zucker</th>
               <th scope="col">Protein</th>
               <th scope="col">Ballaststoffe</th>
+<th scope="col">&nbsp;</th>
             </tr>
           </thead>
           <tbody>
@@ -192,7 +192,7 @@ const Lists = function () {
                     data-id={data.id}
                     onClick={handleclick}
                   >
-                    Hinzufügen zu...
+                    Hinzufügen
                   </button>
 
                   <div
