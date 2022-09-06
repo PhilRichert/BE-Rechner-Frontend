@@ -6,6 +6,7 @@ import Navbar from "../components/Navbar.js";
 import Banner from "../components/Banner.js";
 
 export default function NewEntry() {
+  const [loading, setLoading] = useState(true);
   const [allentrys, setAllEntrys] = useState([]);
   const [currentsettings, setCurrentSettings] = useState([]);
 
@@ -23,6 +24,7 @@ export default function NewEntry() {
         return null;
       } else if (currentsettings !== response.data) {
         setCurrentSettings(response.data);
+        setLoading(false);
       }
     });
   };
@@ -49,13 +51,11 @@ export default function NewEntry() {
 
   useEffect(() => getData(), []);
 
-  const einstellungen = function () {
-    if (!currentsettings) {
-      return null;
-    } else {
-      return currentsettings.filter((e) => e.id === 1);
-    }
-  };
+  if (loading) {
+    return <div>loading....</div>;
+  }
+
+  const einstellungen = currentsettings.filter((e) => e.id === 1);
 
   function findmahlzeit(mahlzeit) {
     const mahlzeiten = allentrys.filter((e) => mahlzeit === e.mahlzeit);

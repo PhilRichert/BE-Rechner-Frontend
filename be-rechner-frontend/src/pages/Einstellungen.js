@@ -8,6 +8,7 @@ import Banner from "../components/Banner.js";
 import Prefooter from "../components/Prefooter.js";
 
 export default function Einstellungen() {
+  const [loading, setLoading] = useState(true);
   const [title, setTitle] = useState(0);
   const [title2, setTitle2] = useState(0);
   const [title3, setTitle3] = useState(0);
@@ -30,11 +31,16 @@ export default function Einstellungen() {
         return null;
       } else if (currentsettings !== response.data) {
         setCurrentSettings(response.data);
+        setLoading(false);
       }
     });
   };
 
   useEffect(() => getData(), []);
+
+  if (loading) {
+    return <div>loading....</div>;
+  }
 
   console.log(currentsettings);
 
