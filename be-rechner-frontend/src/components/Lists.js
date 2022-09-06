@@ -3,6 +3,7 @@ import Select from "react-select";
 import { useEffect, useState } from "react";
 
 const Lists = function () {
+  const [loading, setLoading] = useState(true);
   const [list, setList] = useState([]);
   const [buttoninfo, setButtoninfo] = useState([]);
   const [input, setInput] = useState(100);
@@ -23,11 +24,16 @@ const Lists = function () {
         return null;
       } else if (list !== response.data) {
         setList(response.data);
+        setLoading(false);
       }
     });
   };
   console.log(list);
   useEffect(() => getData(), []);
+
+  if (loading) {
+    return <div>loading....</div>;
+  }
 
   const Post_entry = (funde) => {
     const options = {
