@@ -402,8 +402,6 @@ export default function LebensmittelHinzu() {
               ))}
             </tbody>
           </table>
-
-          
         </div>
       </div>
       <Prefooter />

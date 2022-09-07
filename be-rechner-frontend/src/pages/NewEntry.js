@@ -101,15 +101,17 @@ export default function NewEntry() {
                 </thead>
                 <tbody>
                   <th scope="row">{e.menge}</th>
-                  <td>{e.brennwert}</td>
-                  <td>{e.fett}</td>
-                  <td>{e.kohlenhydrate}</td>
-                  <td>{e.davonzucker}</td>
-                  <td>{e.protein}</td>
-                  <td>{e.ballaststoffe}</td>
-                  <td>{e.kohlenhydrate / 12}</td>
-                  <td>{e.kohlenhydrate / 10}</td>
-                  <td>{(e.fett * 9) / 100 + (e.protein * 4) / 100} </td>
+                  <td>{Math.round(e.brennwert)}</td>
+                  <td>{Math.round(e.fett)}</td>
+                  <td>{Math.round(e.kohlenhydrate)}</td>
+                  <td>{Math.round(e.davonzucker)}</td>
+                  <td>{Math.round(e.protein)}</td>
+                  <td>{Math.round(e.ballaststoffe)}</td>
+                  <td>{Math.round(e.kohlenhydrate / 12)}</td>
+                  <td>{Math.round(e.kohlenhydrate / 10)}</td>
+                  <td>
+                    {Math.round((e.fett * 9) / 100 + (e.protein * 4) / 100)}
+                  </td>
                 </tbody>
               </table>
             </div>
@@ -130,9 +132,11 @@ export default function NewEntry() {
         <div>
           <p>
             {" "}
-            Die gesamt {zielwert} betragen: {gesamt / 12}
+            Die gesamt {zielwert} betragen: {Math.round(gesamt / 12)}
           </p>
-          <p>Für BE abzugebenes Insulin: {(gesamt / 12) * Faktor} IE </p>
+          <p>
+            Für BE abzugebenes Insulin: {Math.round((gesamt / 12) * Faktor)} IE{" "}
+          </p>
         </div>
       );
     } else if (zielwert === "KE") {
@@ -140,9 +144,12 @@ export default function NewEntry() {
         <div>
           <p>
             {" "}
-            Die gesamt {zielwert} betragen: {gesamt / 10}
+            Die gesamt {zielwert} betragen: {Math.round(gesamt / 10)}
           </p>
-          <p>Für KE abzugebenes Insulin: {(gesamt / 10) * Faktor} IE </p>
+          npm
+          <p>
+            Für KE abzugebenes Insulin: {Math.round((gesamt / 10) * Faktor)} IE{" "}
+          </p>
         </div>
       );
     }
@@ -162,11 +169,14 @@ export default function NewEntry() {
       <div>
         <p>
           Die gesamt FPE betragen
-          {(gesamt_fett * 9) / 100 + (gesamt_protein * 4) / 100}
+          {Math.round((gesamt_fett * 9) / 100 + (gesamt_protein * 4) / 100)}
         </p>
         <p>
           Für FPE abzugebenes Insulin :{" "}
-          {((gesamt_fett * 9) / 100 + (gesamt_protein * 4) / 100) * Faktor} IE
+          {Math.round(
+            ((gesamt_fett * 9) / 100 + (gesamt_protein * 4) / 100) * Faktor
+          )}{" "}
+          IE
         </p>
       </div>
     );
@@ -175,7 +185,7 @@ export default function NewEntry() {
   console.log(einstellungen[0].Faktor_morgens);
   return (
     <div>
-   <Navbar />
+      <Navbar />
       <Banner title="Meine Einträge" />
       <div className="container text-left main-content">
         <div className="row">
@@ -184,71 +194,80 @@ export default function NewEntry() {
               <h2 className="h2-eintrag">Frühstück</h2>
               <div>{findmahlzeit("Frühstück")}</div>
               <div className="ergebnis-eintrag">
-            {gesamt_berechnen(
-              "Frühstück",
-              "BE",
-              einstellungen[0].Faktor_morgens
-            )}
-            {gesamt_berechnen(
-              "Frühstück",
-              "KE",
-              einstellungen[0].Faktor_morgens
-            )}
-            {gesamt_berechnen_FPE("Frühstück", einstellungen[0].Faktor_morgens)}
+                {gesamt_berechnen(
+                  "Frühstück",
+                  "BE",
+                  einstellungen[0].Faktor_morgens
+                )}
+                {gesamt_berechnen(
+                  "Frühstück",
+                  "KE",
+                  einstellungen[0].Faktor_morgens
+                )}
+                {gesamt_berechnen_FPE(
+                  "Frühstück",
+                  einstellungen[0].Faktor_morgens
+                )}
               </div>
             </div>
-
 
             <div className="mahlzeit">
               <h2 className="h2-eintrag">Mittag</h2>
               <div>{findmahlzeit("Mittagessen")}</div>
               <div className="ergebnis-eintrag">
-              {gesamt_berechnen(
-                "Mittagessen",
-                "BE",
-                einstellungen[0].Faktor_mittags
-              )}
-              {gesamt_berechnen(
-                "Mittagessen",
-                "KE",
-                einstellungen[0].Faktor_mittags
-              )}
-              {gesamt_berechnen_FPE(
-                "Mittagessen",
-                einstellungen[0].Faktor_mittags
-              )}
+                {gesamt_berechnen(
+                  "Mittagessen",
+                  "BE",
+                  einstellungen[0].Faktor_mittags
+                )}
+                {gesamt_berechnen(
+                  "Mittagessen",
+                  "KE",
+                  einstellungen[0].Faktor_mittags
+                )}
+                {gesamt_berechnen_FPE(
+                  "Mittagessen",
+                  einstellungen[0].Faktor_mittags
+                )}
               </div>
             </div>
-        
+
             <div className="mahlzeit">
               <h2 className="h2-eintrag">Abendessen</h2>
               <div>{findmahlzeit("Abendbrot")}</div>
               <div className="ergebnis-eintrag">
-              {gesamt_berechnen(
-                "Abendbrot",
-                "BE",
-                einstellungen[0].Faktor_abends
-              )}
-              {gesamt_berechnen(
-                "Abendbrot",
-                "KE",
-                einstellungen[0].Faktor_abends
-              )}
-              {gesamt_berechnen_FPE(
-                "Abendbrot",
-                einstellungen[0].Faktor_abends
-              )}
+                {gesamt_berechnen(
+                  "Abendbrot",
+                  "BE",
+                  einstellungen[0].Faktor_abends
+                )}
+                {gesamt_berechnen(
+                  "Abendbrot",
+                  "KE",
+                  einstellungen[0].Faktor_abends
+                )}
+                {gesamt_berechnen_FPE(
+                  "Abendbrot",
+                  einstellungen[0].Faktor_abends
+                )}
               </div>
             </div>
-       
 
             <div className="mahlzeit">
               <h2 className="h2-eintrag">Spätmahlzeit</h2>
               <div>{findmahlzeit("Nachts")}</div>
               <div className="ergebnis-eintrag">
-            {gesamt_berechnen("Nachts", "BE", einstellungen[0].Faktor_nachts)}
-            {gesamt_berechnen("Nachts", "KE", einstellungen[0].Faktor_nachts)}
-            {gesamt_berechnen_FPE("Nachts", einstellungen[0].Faktor_nachts)}
+                {gesamt_berechnen(
+                  "Nachts",
+                  "BE",
+                  einstellungen[0].Faktor_nachts
+                )}
+                {gesamt_berechnen(
+                  "Nachts",
+                  "KE",
+                  einstellungen[0].Faktor_nachts
+                )}
+                {gesamt_berechnen_FPE("Nachts", einstellungen[0].Faktor_nachts)}
               </div>
             </div>
           </div>

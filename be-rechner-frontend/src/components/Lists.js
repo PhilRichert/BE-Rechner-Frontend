@@ -13,8 +13,8 @@ const Lists = function () {
     method: "GET",
     headers: {
       Accept: "application/json",
-      "Content-Type": "application/json;charset=UTF-8"
-    }
+      "Content-Type": "application/json;charset=UTF-8",
+    },
   };
 
   const getData = function () {
@@ -35,19 +35,19 @@ const Lists = function () {
       method: "POST",
       headers: {
         Accept: "application/json",
-        "Content-Type": "application/json;charset=UTF-8"
+        "Content-Type": "application/json;charset=UTF-8",
       },
       data: {
         name: funde.name,
         menge: parseInt(input),
-        brennwert: (input * funde.brennwert) / 100,
-        fett: (input * funde.fett) / 100,
-        kohlenhydrate: (input * funde.kohlenhydrate) / 100,
-        davonzucker: (input * funde.davonzucker) / 100,
-        protein: (input * funde.protein) / 100,
-        ballaststoffe: (input * funde.ballaststoffe) / 100,
-        mahlzeit: input2
-      }
+        brennwert: Math.round((input * funde.brennwert) / 100),
+        fett: Math.round((input * funde.fett) / 100),
+        kohlenhydrate: Math.round((input * funde.kohlenhydrate) / 100),
+        davonzucker: Math.round((input * funde.davonzucker) / 100),
+        protein: Math.round((input * funde.protein) / 100),
+        ballaststoffe: Math.round((input * funde.ballaststoffe) / 100),
+        mahlzeit: input2,
+      },
     };
     axios(options).then((response) => {
       console.log(response.status);
@@ -72,7 +72,7 @@ const Lists = function () {
       { value: "frühstück", label: "Frühstück" },
       { value: "mittag", label: "Mittagessen" },
       { value: "abend", label: "Abendbrot" },
-      { value: "nacht", label: "Nachts" }
+      { value: "nacht", label: "Nachts" },
     ];
 
     const handleChange = (selectedOption) => {
@@ -125,12 +125,12 @@ const Lists = function () {
                 />
               </form>
             </td>
-            <td>{(input * funde.brennwert) / 100}</td>
-            <td>{(input * funde.fett) / 100}</td>
-            <td>{(input * funde.kohlenhydrate) / 100}</td>
-            <td>{(input * funde.davonzucker) / 100}</td>
-            <td>{(input * funde.protein) / 100}</td>
-            <td>{(input * funde.ballaststoffe) / 100}</td>
+            <td>{Math.round((input * funde.brennwert) / 100)}</td>
+            <td>{Math.round((input * funde.fett) / 100)}</td>
+            <td>{Math.round((input * funde.kohlenhydrate) / 100)}</td>
+            <td>{Math.round((input * funde.davonzucker) / 100)}</td>
+            <td>{Math.round((input * funde.protein) / 100)}</td>
+            <td>{Math.round((input * funde.ballaststoffe) / 100)}</td>
           </tbody>
         </table>
         <p>&nbsp;</p>
