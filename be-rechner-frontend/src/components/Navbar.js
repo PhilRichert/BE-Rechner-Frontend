@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import bonbon from "../components/images/sugary-logo.png";
 import "./Navbar.css";
 
@@ -32,29 +32,52 @@ export default function Navbar() {
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
             <ul className="navbar-nav mr-auto ">
               <li className="nav-item active">
-                <Link className="nav-link" to="/">
-                  Home <span className="sr-only">(current)</span>
-                </Link>
+                <NavLink
+                  className="nav-link"
+                  to="/"
+                  activeClassName="active-link"
+                >
+                  Home{" "}
+                  {/* <span className="sr-only" activeClassName="active-link">
+                    (current)
+                  </span> */}
+                </NavLink>
               </li>
               <li className="nav-item">
-                <Link className="nav-link" to="/newentry">
+                <NavLink
+                  className="nav-link"
+                  to="/newentry"
+                  activeClassName="active-link"
+                >
                   Neuer Eintrag
-                </Link>
+                </NavLink>
               </li>
               <li className="nav-item">
-                <Link className="nav-link" to="/lebensmittel">
+                <NavLink
+                  className="nav-link"
+                  to="/lebensmittel"
+                  activeClassName="active-link"
+                >
                   Lebensmittel
-                </Link>
+                </NavLink>
               </li>
               <li className="nav-item">
-                <Link className="nav-link" to="/einstellungen">
+                <NavLink
+                  className="nav-link"
+                  to="/einstellungen"
+                  activeClassName="active-link"
+                >
                   Einstellungen
-                </Link>
+                </NavLink>
               </li>
               <li className="nav-item">
-                <Link className="nav-link" to="/kontakt">
+                <NavLink
+                  className="nav-link"
+                  to="/kontakt"
+                  activeClassName="active-link"
+                >
                   Kontakt
-                </Link>
+                </NavLink>
               </li>
             </ul>
           </div>

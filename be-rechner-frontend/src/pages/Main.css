@@ -330,3 +330,20 @@ img.noframe {
     padding: 10px;
   }
 }
+
+button {
+  opacity: 0.5;
+}
+
+button:hover {
+  opacity: 1;
+
+  text-shadow: 1px 1px 1px #292e3a;
+  -webkit-box-shadow: 5px 5px 15px 5px #000000;
+  box-shadow: 5px 5px 15px 5px #000000;
+  -moz-transform: translate(-5px, -3px);
+  -webkit-transform: translate(-5px, -3px);
+  -o-transform: translate(-5px, -3px);
+  -ms-transform: translate(-5px, -3px);
+  transform: translate(-5px, -3px);
+}

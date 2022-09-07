@@ -19,9 +19,25 @@
 
 #navbarSupportedContent ul li a {
   padding-left: 20px;
-  font-weight: 600;
+  /* font-weight: 600; */
 }
 
 .collapse ul li a {
   border-bottom: 1px solid #ddd;
+}
+
+.active-link {
+  color: green;
+}
+
+.nav-link:hover {
+  opacity: 1;
+
+  text-shadow: 1px 1px 1px #292e3a;
+
+  -moz-transform: translate(-5px, -3px);
+  -webkit-transform: translate(-5px, -3px);
+  -o-transform: translate(-5px, -3px);
+  -ms-transform: translate(-5px, -3px);
+  transform: translate(-5px, -3px);
 }
