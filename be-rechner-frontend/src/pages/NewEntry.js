@@ -132,11 +132,9 @@ export default function NewEntry() {
         <div>
           <p className="be-ergebnis">
             {" "}
-            <strong>Die gesamt {zielwert} betragen:</strong>{" "}
-            {Math.round(gesamt / 12)}
-          </p>
-          <p>
-            Für BE abzugebenes Insulin: {Math.round((gesamt / 12) * Faktor)} IE{" "}
+            <strong>Die gesamt {zielwert} betragen:</strong> {Math.round(gesamt / 12)}
+            {" "} &nbsp; {" "}
+            <strong>Für BE abzugebenes Insulin:</strong> {Math.round((gesamt / 12) * Faktor)} IE{" "}
           </p>
         </div>
       );
@@ -145,12 +143,9 @@ export default function NewEntry() {
         <div>
           <p className="ke-ergebnis">
             {" "}
-            <strong>Die gesamt {zielwert} betragen:</strong>{" "}
-            {Math.round(gesamt / 10)}
-          </p>
-
-          <p>
-            Für KE abzugebenes Insulin: {Math.round((gesamt / 10) * Faktor)} IE{" "}
+           <strong>Die gesamt {zielwert} betragen:</strong> {Math.round(gesamt / 10)}
+           {" "} &nbsp; {" "}
+           <strong>Für KE abzugebenes Insulin: </strong>{Math.round((gesamt / 10) * Faktor)} IE{" "}
           </p>
         </div>
       );
@@ -170,11 +165,10 @@ export default function NewEntry() {
     return (
       <div>
         <p className="fpe-ergebnis">
-          <strong>Die gesamt FPE betragen:</strong>
+          <strong>Die gesamt FPE betragen:</strong>{" "}
           {Math.round((gesamt_fett * 9) / 100 + (gesamt_protein * 4) / 100)}
-        </p>
-        <p>
-          Für FPE abzugebenes Insulin :{" "}
+          {" "} &nbsp; {" "}
+          <strong>Für FPE abzugebenes Insulin:</strong>{" "}
           {Math.round(
             ((gesamt_fett * 9) / 100 + (gesamt_protein * 4) / 100) * Faktor
           )}{" "}
@@ -191,9 +185,16 @@ export default function NewEntry() {
       <Banner title="Meine Einträge" />
       <div className="container text-left main-content">
         <div className="row">
-          <div className="col-md-12">
-            <div className="mahlzeit">
-              <h2 className="h2-eintrag">Frühstück</h2>
+          <div className="col">
+            
+            <Accordion>
+        <Accordion.Item eventKey="0">
+          <Accordion.Header>
+          <h2 className="h2-eintrag">Frühstück</h2>
+            
+          </Accordion.Header>
+          <Accordion.Body>
+          <div className="mahlzeit">
               <div>{findmahlzeit("Frühstück")}</div>
               <div className="ergebnis-eintrag">
                 {gesamt_berechnen(
@@ -212,9 +213,19 @@ export default function NewEntry() {
                 )}
               </div>
             </div>
+            </Accordion.Body>
+        </Accordion.Item>
+      </Accordion>
 
+      <Accordion>
+        <Accordion.Item eventKey="0">
+          <Accordion.Header>
+          <h2 className="h2-eintrag">Mittag</h2>
+            
+          </Accordion.Header>
+          <Accordion.Body>
             <div className="mahlzeit">
-              <h2 className="h2-eintrag">Mittag</h2>
+              
               <div>{findmahlzeit("Mittagessen")}</div>
               <div className="ergebnis-eintrag">
                 {gesamt_berechnen(
@@ -233,9 +244,19 @@ export default function NewEntry() {
                 )}
               </div>
             </div>
+            </Accordion.Body>
+        </Accordion.Item>
+      </Accordion>
 
+            <Accordion>
+        <Accordion.Item eventKey="0">
+          <Accordion.Header>
+          <h2 className="h2-eintrag">Abendessen</h2>
+            
+          </Accordion.Header>
+          <Accordion.Body>
             <div className="mahlzeit">
-              <h2 className="h2-eintrag">Abendessen</h2>
+              
               <div>{findmahlzeit("Abendbrot")}</div>
               <div className="ergebnis-eintrag">
                 {gesamt_berechnen(
@@ -254,9 +275,19 @@ export default function NewEntry() {
                 )}
               </div>
             </div>
+</Accordion.Body>
+        </Accordion.Item>
+      </Accordion>
 
+            <Accordion>
+        <Accordion.Item eventKey="0">
+          <Accordion.Header>
+          <h2 className="h2-eintrag">Spätmahlzeit</h2>
+            
+          </Accordion.Header>
+          <Accordion.Body>
             <div className="mahlzeit">
-              <h2 className="h2-eintrag">Spätmahlzeit</h2>
+              
               <div>{findmahlzeit("Nachts")}</div>
               <div className="ergebnis-eintrag">
                 {gesamt_berechnen(
@@ -272,6 +303,9 @@ export default function NewEntry() {
                 {gesamt_berechnen_FPE("Nachts", einstellungen[0].Faktor_nachts)}
               </div>
             </div>
+            </Accordion.Body>
+        </Accordion.Item>
+      </Accordion>
           </div>
         </div>
       </div>
