@@ -269,7 +269,13 @@ img.noframe {
 }
 
 /* Lebensmittelliste */
-
+.lang {
+  padding: 25px;
+}
+.hinzu {
+  padding: 0 25px;
+  margin-bottom: 25px;
+}
 .lebensmittelliste {
   padding: 25px;
 }
