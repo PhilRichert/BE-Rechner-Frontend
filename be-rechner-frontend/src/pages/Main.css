@@ -270,10 +270,14 @@ img.noframe {
 
 /* Lebensmittelliste */
 
-.lang {float: left;
+.lang {
+  float: left;
   padding: 25px;
 }
-.hinzu {padding: 0 25px; margin-bottom: 25px;}
+.hinzu {
+  padding: 0 25px;
+  margin-bottom: 25px;
+}
 .lebensmittelliste {
   padding: 25px;
 }
@@ -333,4 +337,19 @@ img.noframe {
     max-width: 950px !important;
     padding: 10px;
   }
+}
+button {
+  opacity: 0.7;
+}
+
+button:hover {
+  opacity: 1;
+
+  text-shadow: 1px 1px 1px #292e3a;
+
+  -moz-transform: translate(-5px, -3px);
+  -webkit-transform: translate(-5px, -3px);
+  -o-transform: translate(-5px, -3px);
+  -ms-transform: translate(-5px, -3px);
+  transform: translate(-5px, -3px);
 }
