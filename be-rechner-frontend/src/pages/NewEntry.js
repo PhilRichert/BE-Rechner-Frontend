@@ -146,7 +146,7 @@ export default function NewEntry() {
             {" "}
             Die gesamt {zielwert} betragen: {Math.round(gesamt / 10)}
           </p>
-          npm
+
           <p>
             Für KE abzugebenes Insulin: {Math.round((gesamt / 10) * Faktor)} IE{" "}
           </p>
