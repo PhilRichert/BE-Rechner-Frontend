@@ -130,9 +130,9 @@ export default function NewEntry() {
     if (zielwert === "BE") {
       return (
         <div>
-          <p>
+          <p className="be-ergebnis">
             {" "}
-            Die gesamt {zielwert} betragen: {Math.round(gesamt / 12)}
+            <strong>Die gesamt {zielwert} betragen:</strong> {Math.round(gesamt / 12)}
           </p>
           <p>
             Für BE abzugebenes Insulin: {Math.round((gesamt / 12) * Faktor)} IE{" "}
@@ -142,11 +142,11 @@ export default function NewEntry() {
     } else if (zielwert === "KE") {
       return (
         <div>
-          <p>
+          <p className="ke-ergebnis">
             {" "}
-            Die gesamt {zielwert} betragen: {Math.round(gesamt / 10)}
+           <strong>Die gesamt {zielwert} betragen:</strong> {Math.round(gesamt / 10)}
           </p>
-          npm
+          
           <p>
             Für KE abzugebenes Insulin: {Math.round((gesamt / 10) * Faktor)} IE{" "}
           </p>
@@ -167,8 +167,8 @@ export default function NewEntry() {
     console.log(gesamt_fett, gesamt_protein);
     return (
       <div>
-        <p>
-          Die gesamt FPE betragen
+        <p className="fpe-ergebnis">
+          <strong>Die gesamt FPE betragen:</strong>
           {Math.round((gesamt_fett * 9) / 100 + (gesamt_protein * 4) / 100)}
         </p>
         <p>
