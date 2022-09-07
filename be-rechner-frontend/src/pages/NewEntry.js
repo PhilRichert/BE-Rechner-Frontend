@@ -56,7 +56,11 @@ export default function NewEntry() {
   useEffect(() => getData(), []);
 
   if (loading) {
-    return <div>loading....</div>;
+    return (
+      <div class="spinner-grow text-success" role="status">
+        <span class="visually-hidden">Loading...</span>
+      </div>
+    );
   }
 
   const einstellungen = currentsettings.filter((e) => e.id === 1);
