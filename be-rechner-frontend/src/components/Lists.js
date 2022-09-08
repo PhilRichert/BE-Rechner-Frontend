@@ -154,9 +154,6 @@ const Lists = function () {
                       return null;
                     } else if (input !== e.target.value) {
                       setInput(e.target.value);
-                      if (!entry) {
-                        return null;
-                      }
                     }
                   }}
                 />
