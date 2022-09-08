@@ -49,19 +49,19 @@ export default function Einstellungen() {
 
   console.log(currentsettings);
 
-  const showsettings = function () {
-    const einstellungen = currentsettings.filter((e) => e.id === 1);
-    return (
-      <div>
-        <ul>
-          <li>Faktor_morgens:{einstellungen[0].Faktor_morgens}</li>
-          <li>Faktor_mittags:{einstellungen[0].Faktor_mittags}</li>
-          <li>Faktor_abends:{einstellungen[0].Faktor_abends}</li>
-          <li>Faktor_nachts:{einstellungen[0].Faktor_nachts}</li>
-        </ul>
-      </div>
-    );
-  };
+  // const showsettings = function () {
+  //   const einstellungen = currentsettings.filter((e) => e.id === 1);
+  //   return (
+  //     <div>
+  //       <ul>
+  //         <li>Faktor_morgens:{einstellungen[0].Faktor_morgens}</li>
+  //         <li>Faktor_mittags:{einstellungen[0].Faktor_mittags}</li>
+  //         <li>Faktor_abends:{einstellungen[0].Faktor_abends}</li>
+  //         <li>Faktor_nachts:{einstellungen[0].Faktor_nachts}</li>
+  //       </ul>
+  //     </div>
+  //   );
+  // };
 
   const handleclick = function () {
     // if()
