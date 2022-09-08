@@ -3,7 +3,7 @@ import Select from "react-select";
 import { useEffect, useState } from "react";
 import Alert from "react-bootstrap/Alert";
 import Button from "react-bootstrap/Button";
-import react from "react";
+import React from "react";
 
 const Lists = function () {
   const [loading, setLoading] = useState(true);
