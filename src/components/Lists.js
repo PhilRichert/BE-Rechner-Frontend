@@ -1,15 +1,16 @@
 import axios from "axios";
 import Select from "react-select";
 import { useEffect, useState } from "react";
-import Alert from "react-bootstrap/Alert";
-import Button from "react-bootstrap/Button";
+
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 const Lists = function () {
   const [loading, setLoading] = useState(true);
   const [list, setList] = useState([]);
   const [buttoninfo, setButtoninfo] = useState([]);
   const [input, setInput] = useState(100);
+  let history = useNavigate();
 
   const [input2, setInput2] = useState("");
   const options = {
@@ -63,8 +64,9 @@ const Lists = function () {
       },
     };
     axios(options).then((res) => {
-      AlertDismissible();
+      console.log(res);
     });
+    history("/");
   };
 
   const handleclick = function (e) {
@@ -74,31 +76,6 @@ const Lists = function () {
       setButtoninfo(e.target.dataset.id);
     }
   };
-
-  function AlertDismissible() {
-    const [show, setShow] = useState(true);
-
-    return (
-      <>
-        <Alert show={show} variant="success">
-          <Alert.Heading>How's it going?!</Alert.Heading>
-          <p>
-            Duis mollis, est non commodo luctus, nisi erat porttitor ligula,
-            eget lacinia odio sem nec elit. Cras mattis consectetur purus sit
-            amet fermentum.
-          </p>
-          <hr />
-          <div className="d-flex justify-content-end">
-            <Button onClick={() => setShow(false)} variant="outline-success">
-              Close me y'all!
-            </Button>
-          </div>
-        </Alert>
-
-        {!show && <Button onClick={() => setShow(true)}>Show Alert</Button>}
-      </>
-    );
-  }
 
   function fund() {
     let funde = list.find((e) => parseInt(buttoninfo) === e.id);
@@ -173,6 +150,7 @@ const Lists = function () {
         <button
           type="button"
           class="btn btn-primary btn-lg"
+          data-dismiss="modal"
           onClick={() => Post_entry(funde)}
         >
           Hinzufügen zu Tagesplan

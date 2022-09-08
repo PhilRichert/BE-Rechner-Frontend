@@ -41,7 +41,7 @@ export default function LebensmittelHinzu() {
     });
   };
 
-  useEffect(() => getData(), []);
+  useEffect(() => getData(), [list_ingridients]);
 
   if (loading) {
     return (
@@ -182,6 +182,7 @@ export default function LebensmittelHinzu() {
         <button
           type="button"
           class="btn btn-primary btn-lg"
+          data-dismiss="modal"
           onClick={() => Post_entry(funde)}
         >
           Hinzufügen zu Tagesplan
@@ -351,6 +352,7 @@ export default function LebensmittelHinzu() {
                     <button
                       type="button"
                       class="btn btn-primary"
+                      data-dismiss="modal"
                       onClick={() => handleclick()}
                     >
                       Erstellen
