@@ -150,6 +150,7 @@ const Lists = function () {
         <button
           type="button"
           class="btn btn-primary btn-lg"
+          data-dismiss="modal"
           onClick={() => Post_entry(funde)}
         >
           Hinzufügen zu Tagesplan
