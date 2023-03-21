@@ -11,12 +11,6 @@ import LebensmittelHinzu from "./pages/Lebensmittelhinzu.js";
 import Kontakt from "./pages/Kontakt.js";
 import Einstellungen from "./pages/Einstellungen.js";
 
-Header("Acces-Control-Allow-Origin: *");
-Header("Acces-Control-Allow-Methods: POST,GET,OPTIONS,PUT, DELETE");
-Header(
-  "Acces-Control-Allow-Headers: Content-Type,X-Auth-Token, Origin, Authorization"
-);
-
 export default function App() {
   return (
     <BrowserRouter>
