@@ -9,7 +9,14 @@ import LebensmittelListe from "./pages/Lebensmittelliste.js";
 import MeineMenues from "./pages/MeineMenues.js";
 import LebensmittelHinzu from "./pages/Lebensmittelhinzu.js";
 import Kontakt from "./pages/Kontakt.js";
- import Einstellungen from "./pages/Einstellungen.js";
+import Einstellungen from "./pages/Einstellungen.js";
+
+Header("Acces-Control-Allow-Origin: *");
+Header("Acces-Control-Allow-Methods: POST,GET,OPTIONS,PUT, DELETE");
+Header(
+  "Acces-Control-Allow-Headers: Content-Type,X-Auth-Token, Origin, Authorization"
+);
+
 export default function App() {
   return (
     <BrowserRouter>
@@ -21,7 +28,7 @@ export default function App() {
         <Route path="/meinemenues" element={<MeineMenues />} />
         <Route path="/lebensmittelhinzu" element={<LebensmittelHinzu />} />
         <Route path="/kontakt" element={<Kontakt />} />
-       <Route path="/einstellungen" element={<Einstellungen />} /> 
+        <Route path="/einstellungen" element={<Einstellungen />} />
       </Routes>
     </BrowserRouter>
   );
