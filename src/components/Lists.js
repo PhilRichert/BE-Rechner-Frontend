@@ -14,7 +14,7 @@ const Lists = function () {
 
   const [input2, setInput2] = useState("");
   const options = {
-    url: "https://sugarlybackend.herokuapp.com/ingridients",
+    url: "https://sugary-backend.onrender.com/ingridients",
     method: "GET",
     headers: {
       Accept: "application/json",
