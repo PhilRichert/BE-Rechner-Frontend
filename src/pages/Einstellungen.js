@@ -20,7 +20,7 @@ export default function Einstellungen() {
 
   const getData = function () {
     const options = {
-      url: "https://sugarlybackend.herokuapp.com/settings",
+      url: "https://sugary-backend.onrender.com/settings",
       method: "GET",
       headers: {
         Accept: "application/json",
@@ -66,7 +66,7 @@ export default function Einstellungen() {
   const handleclick = function () {
     // if()
     const options = {
-      url: "https://sugarlybackend.herokuapp.com/settings",
+      url: "https://sugary-backend.onrender.com/settings",
       method: "PUT",
       headers: {
         Accept: "application/json",

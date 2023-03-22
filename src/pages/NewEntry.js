@@ -16,7 +16,7 @@ export default function NewEntry() {
 
   const getData2 = function () {
     const options2 = {
-      url: "https://sugarlybackend.herokuapp.com/settings",
+      url: "https://sugary-backend.onrender.com/settings",
       method: "GET",
       headers: {
         Accept: "application/json",
@@ -34,7 +34,7 @@ export default function NewEntry() {
   };
 
   const options = {
-    url: "https://sugarlybackend.herokuapp.com/entrys/add",
+    url: "https://sugary-backend.onrender.com/entrys/add",
     method: "GET",
     headers: {
       Accept: "application/json",
@@ -136,9 +136,10 @@ export default function NewEntry() {
         <div>
           <p className="be-ergebnis">
             {" "}
-            <strong>Die gesamt {zielwert} betragen:</strong> {Math.round(gesamt / 12)}
-            {" "} &nbsp; {" "}
-            <strong>Für BE abzugebenes Insulin:</strong> {Math.round((gesamt / 12) * Faktor)} IE{" "}
+            <strong>Die gesamt {zielwert} betragen:</strong>{" "}
+            {Math.round(gesamt / 12)} &nbsp;{" "}
+            <strong>Für BE abzugebenes Insulin:</strong>{" "}
+            {Math.round((gesamt / 12) * Faktor)} IE{" "}
           </p>
         </div>
       );
@@ -147,9 +148,10 @@ export default function NewEntry() {
         <div>
           <p className="ke-ergebnis">
             {" "}
-           <strong>Die gesamt {zielwert} betragen:</strong> {Math.round(gesamt / 10)}
-           {" "} &nbsp; {" "}
-           <strong>Für KE abzugebenes Insulin: </strong>{Math.round((gesamt / 10) * Faktor)} IE{" "}
+            <strong>Die gesamt {zielwert} betragen:</strong>{" "}
+            {Math.round(gesamt / 10)} &nbsp;{" "}
+            <strong>Für KE abzugebenes Insulin: </strong>
+            {Math.round((gesamt / 10) * Faktor)} IE{" "}
           </p>
         </div>
       );
@@ -170,9 +172,8 @@ export default function NewEntry() {
       <div>
         <p className="fpe-ergebnis">
           <strong>Die gesamt FPE betragen:</strong>{" "}
-          {Math.round((gesamt_fett * 9) / 100 + (gesamt_protein * 4) / 100)}
-          {" "} &nbsp; {" "}
-          <strong>Für FPE abzugebenes Insulin:</strong>{" "}
+          {Math.round((gesamt_fett * 9) / 100 + (gesamt_protein * 4) / 100)}{" "}
+          &nbsp; <strong>Für FPE abzugebenes Insulin:</strong>{" "}
           {Math.round(
             ((gesamt_fett * 9) / 100 + (gesamt_protein * 4) / 100) * Faktor
           )}{" "}
@@ -190,126 +191,121 @@ export default function NewEntry() {
       <div className="container text-left main-content">
         <div className="row">
           <div className="col">
-            
             <Accordion>
-        <Accordion.Item eventKey="0">
-          <Accordion.Header>
-          <h2 className="h2-eintrag">Frühstück</h2>
-            
-          </Accordion.Header>
-          <Accordion.Body>
-          <div className="mahlzeit">
-              <div>{findmahlzeit("Frühstück")}</div>
-              <div className="ergebnis-eintrag">
-                {gesamt_berechnen(
-                  "Frühstück",
-                  "BE",
-                  einstellungen[0].Faktor_morgens
-                )}
-                {gesamt_berechnen(
-                  "Frühstück",
-                  "KE",
-                  einstellungen[0].Faktor_morgens
-                )}
-                {gesamt_berechnen_FPE(
-                  "Frühstück",
-                  einstellungen[0].Faktor_morgens
-                )}
-              </div>
-            </div>
-            </Accordion.Body>
-        </Accordion.Item>
-      </Accordion>
-
-      <Accordion>
-        <Accordion.Item eventKey="0">
-          <Accordion.Header>
-          <h2 className="h2-eintrag">Mittag</h2>
-            
-          </Accordion.Header>
-          <Accordion.Body>
-            <div className="mahlzeit">
-              
-              <div>{findmahlzeit("Mittagessen")}</div>
-              <div className="ergebnis-eintrag">
-                {gesamt_berechnen(
-                  "Mittagessen",
-                  "BE",
-                  einstellungen[0].Faktor_mittags
-                )}
-                {gesamt_berechnen(
-                  "Mittagessen",
-                  "KE",
-                  einstellungen[0].Faktor_mittags
-                )}
-                {gesamt_berechnen_FPE(
-                  "Mittagessen",
-                  einstellungen[0].Faktor_mittags
-                )}
-              </div>
-            </div>
-            </Accordion.Body>
-        </Accordion.Item>
-      </Accordion>
+              <Accordion.Item eventKey="0">
+                <Accordion.Header>
+                  <h2 className="h2-eintrag">Frühstück</h2>
+                </Accordion.Header>
+                <Accordion.Body>
+                  <div className="mahlzeit">
+                    <div>{findmahlzeit("Frühstück")}</div>
+                    <div className="ergebnis-eintrag">
+                      {gesamt_berechnen(
+                        "Frühstück",
+                        "BE",
+                        einstellungen[0].Faktor_morgens
+                      )}
+                      {gesamt_berechnen(
+                        "Frühstück",
+                        "KE",
+                        einstellungen[0].Faktor_morgens
+                      )}
+                      {gesamt_berechnen_FPE(
+                        "Frühstück",
+                        einstellungen[0].Faktor_morgens
+                      )}
+                    </div>
+                  </div>
+                </Accordion.Body>
+              </Accordion.Item>
+            </Accordion>
 
             <Accordion>
-        <Accordion.Item eventKey="0">
-          <Accordion.Header>
-          <h2 className="h2-eintrag">Abendessen</h2>
-            
-          </Accordion.Header>
-          <Accordion.Body>
-            <div className="mahlzeit">
-              
-              <div>{findmahlzeit("Abendbrot")}</div>
-              <div className="ergebnis-eintrag">
-                {gesamt_berechnen(
-                  "Abendbrot",
-                  "BE",
-                  einstellungen[0].Faktor_abends
-                )}
-                {gesamt_berechnen(
-                  "Abendbrot",
-                  "KE",
-                  einstellungen[0].Faktor_abends
-                )}
-                {gesamt_berechnen_FPE(
-                  "Abendbrot",
-                  einstellungen[0].Faktor_abends
-                )}
-              </div>
-            </div>
-</Accordion.Body>
-        </Accordion.Item>
-      </Accordion>
+              <Accordion.Item eventKey="0">
+                <Accordion.Header>
+                  <h2 className="h2-eintrag">Mittag</h2>
+                </Accordion.Header>
+                <Accordion.Body>
+                  <div className="mahlzeit">
+                    <div>{findmahlzeit("Mittagessen")}</div>
+                    <div className="ergebnis-eintrag">
+                      {gesamt_berechnen(
+                        "Mittagessen",
+                        "BE",
+                        einstellungen[0].Faktor_mittags
+                      )}
+                      {gesamt_berechnen(
+                        "Mittagessen",
+                        "KE",
+                        einstellungen[0].Faktor_mittags
+                      )}
+                      {gesamt_berechnen_FPE(
+                        "Mittagessen",
+                        einstellungen[0].Faktor_mittags
+                      )}
+                    </div>
+                  </div>
+                </Accordion.Body>
+              </Accordion.Item>
+            </Accordion>
 
             <Accordion>
-        <Accordion.Item eventKey="0">
-          <Accordion.Header>
-          <h2 className="h2-eintrag">Spätmahlzeit</h2>
-            
-          </Accordion.Header>
-          <Accordion.Body>
-            <div className="mahlzeit">
-              
-              <div>{findmahlzeit("Nachts")}</div>
-              <div className="ergebnis-eintrag">
-                {gesamt_berechnen(
-                  "Nachts",
-                  "BE",
-                  einstellungen[0].Faktor_nachts
-                )}
-                {gesamt_berechnen(
-                  "Nachts",
-                  "KE",
-                  einstellungen[0].Faktor_nachts
-                )}
-                {gesamt_berechnen_FPE("Nachts", einstellungen[0].Faktor_nachts)}
-              </div>
-            </div>
-            </Accordion.Body>
-        </Accordion.Item>
-      </Accordion>
+              <Accordion.Item eventKey="0">
+                <Accordion.Header>
+                  <h2 className="h2-eintrag">Abendessen</h2>
+                </Accordion.Header>
+                <Accordion.Body>
+                  <div className="mahlzeit">
+                    <div>{findmahlzeit("Abendbrot")}</div>
+                    <div className="ergebnis-eintrag">
+                      {gesamt_berechnen(
+                        "Abendbrot",
+                        "BE",
+                        einstellungen[0].Faktor_abends
+                      )}
+                      {gesamt_berechnen(
+                        "Abendbrot",
+                        "KE",
+                        einstellungen[0].Faktor_abends
+                      )}
+                      {gesamt_berechnen_FPE(
+                        "Abendbrot",
+                        einstellungen[0].Faktor_abends
+                      )}
+                    </div>
+                  </div>
+                </Accordion.Body>
+              </Accordion.Item>
+            </Accordion>
+
+            <Accordion>
+              <Accordion.Item eventKey="0">
+                <Accordion.Header>
+                  <h2 className="h2-eintrag">Spätmahlzeit</h2>
+                </Accordion.Header>
+                <Accordion.Body>
+                  <div className="mahlzeit">
+                    <div>{findmahlzeit("Nachts")}</div>
+                    <div className="ergebnis-eintrag">
+                      {gesamt_berechnen(
+                        "Nachts",
+                        "BE",
+                        einstellungen[0].Faktor_nachts
+                      )}
+                      {gesamt_berechnen(
+                        "Nachts",
+                        "KE",
+                        einstellungen[0].Faktor_nachts
+                      )}
+                      {gesamt_berechnen_FPE(
+                        "Nachts",
+                        einstellungen[0].Faktor_nachts
+                      )}
+                    </div>
+                  </div>
+                </Accordion.Body>
+              </Accordion.Item>
+            </Accordion>
           </div>
         </div>
       </div>

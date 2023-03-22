@@ -24,7 +24,7 @@ export default function LebensmittelHinzu() {
 
   const getData = function () {
     const options = {
-      url: "https://sugarlybackend.herokuapp.com/newingridient",
+      url: "https://sugary-backend.onrender.com/newingridient",
       method: "GET",
       headers: {
         Accept: "application/json",
@@ -53,7 +53,7 @@ export default function LebensmittelHinzu() {
 
   const handleclick = function () {
     const options = {
-      url: "https://sugarlybackend.herokuapp.com/newingridient/newentry",
+      url: "https://sugary-backend.onrender.com/newingridient/newentry",
       method: "POST",
       headers: {
         Accept: "application/json",
@@ -78,7 +78,7 @@ export default function LebensmittelHinzu() {
 
   const Post_entry = (funde) => {
     const options = {
-      url: "https://sugarlybackend.herokuapp.com/entrys/add",
+      url: "https://sugary-backend.onrender.com/entrys/add",
       method: "POST",
       headers: {
         Accept: "application/json",

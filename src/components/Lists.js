@@ -45,7 +45,7 @@ const Lists = function () {
 
   const Post_entry = (funde) => {
     const options = {
-      url: "https://sugarlybackend.herokuapp.com/entrys/add",
+      url: "https://sugary-backend.onrender.com/entrys/add",
       method: "POST",
       headers: {
         Accept: "application/json",
